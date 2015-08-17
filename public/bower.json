@@ -1,0 +1,23 @@
+{
+  "name": "grainbilld2",
+  "version": "0.0.0",
+  "authors": [
+    "Shawn Chambless <shawn.chambless@gmail.com>"
+  ],
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.4",
+    "angular-ui-router": "~0.2.15"
+  }
+}

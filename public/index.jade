@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+    head
+        title Grain Billd
+        link(href='styles/main.css' rel='stylesheet')
+    body(ng-app='GrainBilld')
+        
+        ui-view
+        
+        
+        script(src='bower_components/angular/angular.js')
+        script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
+        script(src='app/app.js')
+        script(src='app/login/loginController.js')
+        script(src='app/login/loginService.js')
+        script(src='app/home/homeController.js')
+        script(src='app/home/homeService.js')
