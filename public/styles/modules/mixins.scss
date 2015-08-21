@@ -1,0 +1,12 @@
+@mixin submit () {
+        transition: $inputTransition;
+        background: darken($blue, 20%);
+        &:hover {
+            background: lighten($blue, 5%);
+        }
+        &:focus {
+            border: none;
+            outline: none;
+            box-shadow: 0 0 5px #333;
+        }
+}
