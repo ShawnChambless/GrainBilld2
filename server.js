@@ -47,9 +47,6 @@ app.put(    '/api/users/:user_id',              userCtrl.update );
 app.put(    '/api/users/:user_id/:recipe_id',   userCtrl.updateRecipes);
 app.delete( '/api/users/:user_id',              userCtrl.remove );
 
-
-
-
 //Database endpoints
 
     app.get(    '/api/database/ingredients/grain',      grainCtrl.getGrain);
