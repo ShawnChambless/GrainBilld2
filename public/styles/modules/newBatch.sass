@@ -1,0 +1,22 @@
+.newBatchWrapper
+    height: 100%
+    display: flex
+    justify-content: space-between
+    +outer-container
+    .module
+        height: 100%
+        width: calc(100%/3)
+        overflow-x: scroll
+        padding: 0 50px
+        &.ingredients, &.ingredientData
+            border-left: 1px solid $blue
+        &.recipeData
+            border-right: 1px solid $blue
+            border-left: 1px solid $blue
+        .inputWrapper
+            margin-top: 20px
+            input
+                +submit
+                display: block
+                margin: 20px auto
+                width: 97%
