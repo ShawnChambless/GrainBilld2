@@ -12,9 +12,9 @@ var gulp        = require( 'gulp' ),
     watch       = require( 'gulp-watch' ),
     rename      = require( 'gulp-rename' ),
     paths = {
-        jade: ['./public/**/*.jade'],
-        sass: ['./public/styles/**/*.sass', './public/styles/**/*.scss', '!./public/styles/main.sass'],
-        scripts: ['./public/app/**/*.js', '!./public/app/scripts.min.js']
+        jade: ['public/**/*.jade'],
+        sass: ['public/styles/**/*.sass', 'public/styles/**/*.scss', '!./public/styles/main.sass'],
+        scripts: ['public/app/**/*.js', '!./public/app/scripts.min.js']
     };
 
 gulp.task('jade', function(done) {
@@ -28,7 +28,7 @@ gulp.task('jade', function(done) {
 });
 
 gulp.task('sass', function(done) {
-    gulp.src('./public/styles/main.sass')
+    gulp.src('public/styles/main.sass')
         .pipe(plumber())
         .pipe(bulkSass())
         .pipe(sass())
@@ -41,7 +41,7 @@ gulp.task('sass', function(done) {
         .pipe(rename(function (path) {
             path.extname = "-min.css";
         }))
-        .pipe(gulp.dest('./public/styles/'))
+        .pipe(gulp.dest('public/styles/'))
         .on('end', done);
 });
 
@@ -51,7 +51,7 @@ gulp.task('minifyJS', function(done) {
         .pipe(annotate())
         .pipe(concat('scripts.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./public/app'))
+        .pipe(gulp.dest('public/app'))
         .on('end', done);
 });
 
@@ -71,7 +71,7 @@ gulp.task('watch', function() {
     gulp.watch(paths.jade, ['jade']);
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.scripts, ['minifyJS']);
-    gulp.watch('./public/index.html');
+    gulp.watch('public/index.html');
 });
 
 gulp.task('default', ['jade', 'sass', 'minifyJS', 'watch']);
