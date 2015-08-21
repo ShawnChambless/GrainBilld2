@@ -1,0 +1,11 @@
+.newBatchWrapper
+    .module.ingredients
+        .inputWrapper
+            input(type='submit' ng-click='showGrainData()' value='Grain')
+            input(type='submit' ng-click='showHopsData()' value='Hops')
+            input(type='submit' ng-click='showYeastData()' value='Yeast')
+    .module.ingredientData
+        .grain(ng-show='showGrain' ng-repeat='grain in grain') {{grain.name}}
+        .hops(ng-show='showHops' ng-repeat='hops in hops') {{hops.name}}
+        .yeast(ng-show='showYeast' ng-repeat='yeast in yeast') {{yeast.name}}
+    .module.recipeData

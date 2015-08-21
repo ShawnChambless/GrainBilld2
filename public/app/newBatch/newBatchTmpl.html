@@ -1,0 +1,16 @@
+
+<div class="newBatchWrapper">
+  <div class="module ingredients">
+    <div class="inputWrapper">
+      <input type="submit" ng-click="showGrainData()" value="Grain"/>
+      <input type="submit" ng-click="showHopsData()" value="Hops"/>
+      <input type="submit" ng-click="showYeastData()" value="Yeast"/>
+    </div>
+  </div>
+  <div class="module ingredientData">
+    <div ng-show="showGrain" ng-repeat="grain in grain" class="grain">{{grain.name}}</div>
+    <div ng-show="showHops" ng-repeat="hops in hops" class="hops">{{hops.name}}</div>
+    <div ng-show="showYeast" ng-repeat="yeast in yeast" class="yeast">{{yeast.name}}</div>
+  </div>
+  <div class="module recipeData"></div>
+</div>

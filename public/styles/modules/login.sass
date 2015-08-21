@@ -30,13 +30,6 @@ section.login
         font-size: 1.8em
     input[type='submit']
         width: 100%
-        background: darken($blue, 20%)
-        transition: all 90ms ease-in-out
-        &:hover
-            background: lighten($blue, 10%)
-        &:focus
-            border: none
-            outline: none
-            box-shadow: 0 0 5px #333
+        +submit
 .flash-error, .flash-success
     border-radius: 3px

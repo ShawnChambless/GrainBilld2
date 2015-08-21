@@ -33,7 +33,24 @@ angular.module('GrainBilld', ['ui.router'])
         .state('new-batch', {
             url: '/NewBatch',
             controller: 'newBatchController',
-            templateUrl: 'app/newBatch/newBatchTmpl.html'
+            templateUrl: 'app/newBatch/newBatchTmpl.html',
+            resolve: {
+                getGrain: function(homeService) {
+                    return homeService.getGrain().then(function(resp) {
+                        return resp.data;
+                    });
+                },
+                getHops: function(homeService) {
+                    return homeService.getHops().then(function(resp) {
+                        return resp.data;
+                    });
+                },
+                getYeast: function(homeService) {
+                    return homeService.getYeast().then(function(resp) {
+                        return resp.data;
+                    });
+                }
+            }
         })
         .state('ingredientInfo', {
             url: '/IngredientInfo',
