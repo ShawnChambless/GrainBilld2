@@ -10,13 +10,10 @@ var gulp        = require( 'gulp' ),
     compressCss = require( 'gulp-uglifycss' ),
     uglify      = require( 'gulp-uglify' ),
     watch       = require( 'gulp-watch' ),
-    express     = require( 'express' ),
-    favicon     = require( 'serve-favicon' ),
     rename      = require( 'gulp-rename' ),
-    app         = express(),
     paths = {
         jade: ['./public/**/*.jade'],
-        sass: ['./public/styles/**/*.sass', '!./public/styles/main.sass'],
+        sass: ['./public/styles/**/*.sass', './public/styles/**/*.scss', '!./public/styles/main.sass'],
         scripts: ['./public/app/**/*.js', '!./public/app/scripts.min.js']
     };
 
@@ -35,13 +32,12 @@ gulp.task('sass', function(done) {
         .pipe(plumber())
         .pipe(bulkSass())
         .pipe(sass())
+        .pipe(prefix('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(gulp.dest('./public/styles/'))
-        .pipe(sync.stream())
         .pipe(compressCss({
             expandVars: true,
             uglyComments: true
         }))
-        .pipe(prefix('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(rename(function (path) {
             path.extname = "-min.css";
         }))
@@ -59,24 +55,23 @@ gulp.task('minifyJS', function(done) {
         .on('end', done);
 });
 
-gulp.task('serve', ['sass'], function() {
-    sync.init({
-        server:         './public',
-        port:           8080,
-        injectChanges:  true,
-        open:           false,
-        logLevel:       'debug',
-        logFileChanges: false,
-        logSnippet:     false,
-        notify:         false
-    });
-    app.use(favicon(__dirname + '/public/favicon.ico'));
-});
+// gulp.task('serve', ['sass'], function() {
+//     sync.init({
+//         server:         './public',
+//         port:           8080,
+//         injectChanges:  true,
+//         open:           false,
+//         logLevel:       'debug',
+//         logFileChanges: false,
+//         logSnippet:     false,
+//         notify:         false
+//     });
+// });
 gulp.task('watch', function() {
     gulp.watch(paths.jade, ['jade']);
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.scripts, ['minifyJS']);
-    gulp.watch('./public/index.html').on('change', sync.reload);
+    gulp.watch('./public/index.html');
 });
 
-gulp.task('default', ['jade', 'sass', 'minifyJS', 'watch', 'serve']);
+gulp.task('default', ['jade', 'sass', 'minifyJS', 'watch']);

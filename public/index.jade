@@ -4,14 +4,56 @@ html(lang='en')
         title Grain Billd
         link(href='styles/main.css' rel='stylesheet')
     body(ng-app='GrainBilld')
-        
+        header.navigation(role='banner')
+          .navigation-wrapper
+            a.logo(ng-href='javascript:void(0)')
+              span.octicon.octicon-beer
+            a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') MENU
+            nav(role='navigation')
+              ul#js-navigation-menu.navigation-menu.show
+                li.nav-link
+                  a(ng-href='#/home') Home
+                li.nav-link
+                  a(ng-href='#/NewBatch') New Batch
+                li.nav-link
+                    a(ng-href='#/IngredientInfo') Ingredient Info
+                li.nav-link.more
+                  a(ng-href='javascript:void(0)') Recipes
+                  ul.submenu
+                    li
+                      a(ng-href='#/MyRecipes') My Recipes
+                    li
+                      a(ng-href='#/CommunityRecipes') Community Recipes
+                li.nav-link.logout
+                    a(ng-href='/auth/logout') Log Out
+                    //-   ul.submenu
+                    //-     li
+                    //-       a(href='javascript:void(0)') Sub-submenu Item
+                    //-     li
+                    //-       a(href='javascript:void(0)') Another Item
+                    //- li.more
+                    //-   a(href='javascript:void(0)') Another submenu
+                    //-   ul.submenu
+                    //-     li
+                    //-       a(href='javascript:void(0)') Sub-submenu
+                    //-     li
+                    //-       a(href='javascript:void(0)') An Item
         ui-view
         
-        
-        script(src='bower_components/angular/angular.js')
-        script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
+        script(src='components/jquery/dist/jquery.min.js')
+        script(src='app/nav.js')
+        script(src='components/angular/angular.js')
+        script(src='components/angular-ui-router/release/angular-ui-router.js')
         script(src='app/app.js')
         script(src='app/login/loginController.js')
         script(src='app/login/loginService.js')
         script(src='app/home/homeController.js')
         script(src='app/home/homeService.js')
+        script(src='app/newBatch/newBatchController.js')
+        script(src='app/newBatch/newBatchService.js')
+        script(src='app/myRecipes/myRecipesController.js')
+        script(src='app/myRecipes/myRecipesService.js')
+        script(src='app/communityRecipes/communityRecipesController.js')
+        script(src='app/communityRecipes/communityRecipesService.js')
+        script(src='app/ingredientInfo/ingredientInfoController.js')
+        script(src='app/ingredientInfo/ingredientInfoService.js')

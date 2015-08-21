@@ -1,8 +1,7 @@
 angular.module('GrainBilld', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
-
+    $urlRouterProvider.otherwise('/login');
     $stateProvider
         .state('login', {
             url: '/login',
@@ -10,8 +9,45 @@ angular.module('GrainBilld', ['ui.router'])
             templateUrl: 'app/login/loginTmpl.html'
         })
         .state('home', {
-            url: '/',
+            url: '/home',
             controller: 'homeCtrl',
-            templateUrl: 'app/home/homeTmpl.html'
+            templateUrl: 'app/home/homeTmpl.html',
+            resolve: {
+                getGrain: function(homeService) {
+                    return homeService.getGrain().then(function(resp) {
+                        return {grain: resp.data};
+                    });
+                },
+                getHops: function(homeService) {
+                    return homeService.getHops().then(function(resp) {
+                        return {hops: resp.data};
+                    });
+                },
+                getYeast: function(homeService) {
+                    return homeService.getYeast().then(function(resp) {
+                        return {yeast: resp.data};
+                    });
+                }
+            }
+        })
+        .state('new-batch', {
+            url: '/NewBatch',
+            controller: 'newBatchController',
+            templateUrl: 'app/newBatch/newBatchTmpl.html'
+        })
+        .state('ingredientInfo', {
+            url: '/IngredientInfo',
+            controller: 'ingredientInfoController',
+            templateUrl: 'app/ingredientInfo/ingredientInfoTmpl.html'
+        })
+        .state('myRecipes', {
+            url: '/MyRecipes',
+            controller: 'myRecipesController',
+            templateUrl: 'app/myRecipes/myRecipesTmpl.html'
+        })
+        .state('communityRecipes', {
+            url: '/CommunityRecipes',
+            controller: 'communityRecipesController',
+            templateUrl: 'app/CommunityRecipes/communityRecipesTmpl.html'
         });
 });

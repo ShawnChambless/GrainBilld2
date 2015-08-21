@@ -5,13 +5,42 @@
     <link href="styles/main.css" rel="stylesheet">
   </head>
   <body ng-app="GrainBilld">
+    <header role="banner" class="navigation">
+      <div class="navigation-wrapper"><a ng-href="javascript:void(0)" class="logo"><span class="octicon octicon-beer"></span></a><a id="js-mobile-menu" href="javascript:void(0)" class="navigation-menu-button">MENU</a>
+        <nav role="navigation">
+          <ul id="js-navigation-menu" class="navigation-menu show">
+            <li class="nav-link"><a ng-href="#/home">Home</a></li>
+            <li class="nav-link"><a ng-href="#/NewBatch">New Batch</a></li>
+            <li class="nav-link"><a ng-href="#/IngredientInfo">Ingredient Info</a></li>
+            <li class="nav-link more"><a ng-href="javascript:void(0)">Recipes</a>
+              <ul class="submenu">
+                <li><a ng-href="#/MyRecipes">My Recipes</a></li>
+                <li><a ng-href="#/CommunityRecipes">Community Recipes</a></li>
+              </ul>
+            </li>
+            <li class="nav-link logout"><a ng-href="/auth/logout">Log Out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <ui-view></ui-view>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="app/nav.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app/app.js"></script>
     <script src="app/login/loginController.js"></script>
     <script src="app/login/loginService.js"></script>
     <script src="app/home/homeController.js"></script>
     <script src="app/home/homeService.js"></script>
+    <script src="app/newBatch/newBatchController.js"></script>
+    <script src="app/newBatch/newBatchService.js"></script>
+    <script src="app/myRecipes/myRecipesController.js"></script>
+    <script src="app/myRecipes/myRecipesService.js"></script>
+    <script src="app/communityRecipes/communityRecipesController.js"></script>
+    <script src="app/communityRecipes/communityRecipesService.js"></script>
+    <script src="app/ingredientInfo/ingredientInfoController.js"></script>
+    <script src="app/ingredientInfo/ingredientInfoService.js"></script>
   </body>
 </html>
