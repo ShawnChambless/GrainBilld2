@@ -8,9 +8,14 @@
     </div>
   </div>
   <div class="module ingredientData">
-    <div ng-show="showGrain" ng-repeat="grain in grain" class="grain">{{grain.name}}</div>
-    <div ng-show="showHops" ng-repeat="hops in hops" class="hops">{{hops.name}}</div>
-    <div ng-show="showYeast" ng-repeat="yeast in yeast" class="yeast">{{yeast.name}}</div>
+    <input ng-show="showGrain" type="text" ng-model="ingredientFilter" placeholder="Filter grain..."/>
+    <input ng-show="showHops" type="text" ng-model="ingredientFilter" placeholder="Filter hops..."/>
+    <input ng-show="showYeast" type="text" ng-model="ingredientFilter" placeholder="Filter yeast..."/>
+    <div ng-show="showGrain" ng-repeat="grain in grain | filter:ingredientFilter"> 
+      <p ng-click="addGrainToRecipe(grain._id)">{{grain.name}}</p>
+    </div>
+    <p ng-show="showHops" ng-click="addGrainToRecipe(hops._id)" ng-repeat="hops in hops | filter:ingredientFilter">{{hops.name}}</p>
+    <p ng-show="showYeast" ng-click="addYeastToRecipe(yeast._id)" ng-repeat="yeast in yeast | filter:ingredientFilter">{{yeast.name}}</p>
   </div>
   <div class="module recipeData"></div>
 </div>

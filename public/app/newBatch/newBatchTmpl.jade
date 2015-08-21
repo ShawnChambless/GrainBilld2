@@ -5,7 +5,11 @@
             input(type='submit' ng-click='showHopsData()' value='Hops')
             input(type='submit' ng-click='showYeastData()' value='Yeast')
     .module.ingredientData
-        .grain(ng-show='showGrain' ng-repeat='grain in grain') {{grain.name}}
-        .hops(ng-show='showHops' ng-repeat='hops in hops') {{hops.name}}
-        .yeast(ng-show='showYeast' ng-repeat='yeast in yeast') {{yeast.name}}
+        input(ng-show='showGrain' type='text' ng-model='ingredientFilter' placeholder='Filter grain...')
+        input(ng-show='showHops' type='text' ng-model='ingredientFilter' placeholder='Filter hops...')
+        input(ng-show='showYeast' type='text' ng-model='ingredientFilter' placeholder='Filter yeast...')
+        div(ng-show='showGrain' ng-repeat='grain in grain | filter:ingredientFilter') 
+            p(ng-click='addGrainToRecipe(grain._id)') {{grain.name}}
+        p(ng-show='showHops' ng-click='addGrainToRecipe(hops._id)' ng-repeat='hops in hops | filter:ingredientFilter') {{hops.name}}
+        p(ng-show='showYeast' ng-click='addYeastToRecipe(yeast._id)' ng-repeat='yeast in yeast | filter:ingredientFilter') {{yeast.name}}
     .module.recipeData

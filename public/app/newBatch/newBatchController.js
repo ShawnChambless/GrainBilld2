@@ -22,4 +22,8 @@ angular.module('GrainBilld')
         $scope.showYeast    = true;
     };
 
+    $scope.addGrainToRecipe = function(grainId) {
+        newBatchService.addGrainToRecipe(grainId);
+    };
+
 });
