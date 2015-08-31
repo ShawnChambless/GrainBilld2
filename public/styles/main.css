@@ -621,3 +621,13 @@ header.navigation {
       cursor: pointer; }
       .newBatchWrapper .module.ingredientData p:hover {
         color: #5b8bd0; }
+    .newBatchWrapper .module.recipeData span {
+      margin-left: 30px;
+      color: #477dca;
+      font-size: .7em;
+      cursor: pointer;
+      padding: 3px;
+      -webkit-transition: all 110ms ease-in-out;
+              transition: all 110ms ease-in-out; }
+      .newBatchWrapper .module.recipeData span:hover {
+        color: #ff3333; }

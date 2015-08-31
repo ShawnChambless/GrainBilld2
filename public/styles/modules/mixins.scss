@@ -11,3 +11,7 @@
             background: lighten($blue, 5%);
         }
 }
+
+@mixin fastTransition ($property) {
+    transition: $property 110ms ease-in-out;
+}
