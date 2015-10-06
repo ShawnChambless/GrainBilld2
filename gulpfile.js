@@ -50,23 +50,11 @@ gulp.task('minifyJS', function(done) {
         .pipe(plumber())
         .pipe(annotate())
         .pipe(concat('scripts.min.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest('public/app'))
         .on('end', done);
 });
 
-// gulp.task('serve', ['sass'], function() {
-//     sync.init({
-//         server:         './public',
-//         port:           8080,
-//         injectChanges:  true,
-//         open:           false,
-//         logLevel:       'debug',
-//         logFileChanges: false,
-//         logSnippet:     false,
-//         notify:         false
-//     });
-// });
 gulp.task('watch', function() {
     gulp.watch(paths.jade, ['jade']);
     gulp.watch(paths.sass, ['sass']);

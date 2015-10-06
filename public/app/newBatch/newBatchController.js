@@ -1,12 +1,15 @@
 angular.module('GrainBilld')
-.controller('newBatchController', function($scope, newBatchService, homeService, getGrain, getHops, getYeast) {
+.controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast) {
 
-    $scope.grain            = getGrain;
-    $scope.hops             = getHops;
-    $scope.yeast            = getYeast;
-    $scope.recipeGrain      = newBatchService.grainInRecipe;
-    $scope.recipeHops       = newBatchService.hopsInRecipe;
-    $scope.recipeYeast      = newBatchService.yeastInRecipe;
+    $scope.grainInDb        = getGrain;
+    $scope.hopsInDb         = getHops;
+    $scope.yeastInDb        = getYeast;
+    $scope.grainInRecipe    = newBatchService.grainInRecipe;
+    $scope.hopsInRecipe     = newBatchService.hopsInRecipe;
+    $scope.yeastInRecipe    = newBatchService.yeastInRecipe;
+    $scope.grains           = 'grain';
+    $scope.hopss            = 'hops';
+    $scope.yeasts           = 'yeast';
 
     $scope.showGrainData = function() {
         $scope.showGrain    = true;
@@ -26,19 +29,16 @@ angular.module('GrainBilld')
         $scope.showYeast    = true;
     };
 
-    $scope.addGrainToRecipe = function(grain) {
-        newBatchService.addGrainToRecipe(grain);
-        console.log(newBatchService.grainInRecipe);
+    $scope.removeGrain = function(index) {
+        newBatchService.grainInRecipe.splice(index, 1);
     };
 
-    $scope.addHopsToRecipe = function(hops) {
-        newBatchService.addHopsToRecipe(hops);
-        console.log(newBatchService.hopsInRecipe);
+    $scope.removeHops = function(index) {
+        newBatchService.hopsInRecipe.splice(index, 1);
     };
 
-    $scope.addYeastToRecipe = function(yeast) {
-        newBatchService.addYeastToRecipe(yeast);
-        console.log(newBatchService.yeastInRecipe);
+    $scope.removeYeast = function(index) {
+        newBatchService.yeastInRecipe.splice(index, 1);
     };
 
 });
