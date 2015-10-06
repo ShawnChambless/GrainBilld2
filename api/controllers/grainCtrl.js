@@ -6,7 +6,7 @@ module.exports = {
         newGrain = new Grain(req.body);
         newGrain.save(function(err, resp) {
             if(err) return res.sendStatus(500, err);
-                return res.send(resp);
+                return res.json(resp);
         });
     },
 
@@ -14,14 +14,14 @@ module.exports = {
         Grain.find(req.query)
         .exec(function(err, resp) {
             if(err) return res.sendStatus(500);
-                return res.send(resp);
+                return res.json(resp);
         });
     },
 
     updateGrain: function(req, res) {
         Grain.findByIdAndUpdate(req.params._id, req.body, {new:true}, function(err, resp) {
-            if(err) return res.sendStatus(500);
-                return res.send(resp);
+            if(err) return res.status(500).json(err);
+                return res.status(200).json(resp);
         });
     }
 };
