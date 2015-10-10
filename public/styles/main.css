@@ -10,7 +10,7 @@ button {
   appearance: none;
   -webkit-font-smoothing: antialiased;
   background-color: #477dca;
-  border-radius: 3px;
+  border-radius: 2px;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -67,7 +67,7 @@ select[multiple=multiple],
 textarea {
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 3px;
+  border-radius: 2px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
@@ -251,7 +251,8 @@ section.login {
   background: #477dca;
   border-radius: 3px; }
   section.login input {
-    margin: 10px 0; }
+    margin: 10px 0;
+    font-size: initial; }
   section.login header, section.login p {
     color: #f7f7f7;
     text-align: center;
@@ -501,11 +502,11 @@ header.navigation {
         header.navigation ul.submenu li {
           line-height: 46.15385px; }
           header.navigation ul.submenu li:first-child > a {
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px; }
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px; }
           header.navigation ul.submenu li:last-child > a {
-            border-bottom-left-radius: 3px;
-            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
             padding-bottom: 0.7em; } }
       header.navigation ul.submenu li a {
         background-color: #3b75c7;
@@ -537,7 +538,7 @@ header.navigation {
       header.navigation .search-bar form input[type=search] {
         box-sizing: border-box;
         background: #5b8bd0;
-        border-radius: 6px;
+        border-radius: 4px;
         border: 1px solid #3770c0;
         color: rgba(255, 255, 255, 0.7);
         font-size: 0.9em;
