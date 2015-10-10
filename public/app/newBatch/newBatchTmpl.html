@@ -23,9 +23,9 @@
     <div class="recipe og"></div>
     <div class="recipe fg"></div>
     <div class="recipe ingredients">
-      <div ng-repeat="grain in grainInRecipe" class="ingredient grain">{{grain.name}}<span ng-click="removeGrain($index)" class="remove">Remove</span></div>
-      <div ng-repeat="ingredient in hopsInRecipe" class="ingredient hops">{{ingredient.name}}<span ng-click="removeHops($index)" class="remove">Remove</span></div>
-      <div ng-repeat="ingredient in yeastInRecipe" class="ingredient yeast">{{ingredient.name}}<span ng-click="removeYeast($index)" class="remove">Remove</span></div>
+      <div ng-repeat="grain in grainInRecipe" class="ingredient grain">{{grain.grain.name}}<span ng-click="removeGrain($index)" class="remove">Remove</span></div>
+      <div ng-repeat="ingredient in hopsInRecipe" class="ingredient hops">{{ingredient.hops.name}}<span ng-click="removeHops($index)" class="remove">Remove</span></div>
+      <div ng-repeat="ingredient in yeastInRecipe" class="ingredient yeast">{{ingredient.yeast.name}}<span ng-click="removeYeast($index)" class="remove">Remove</span></div>
     </div>
   </div>
 </div>

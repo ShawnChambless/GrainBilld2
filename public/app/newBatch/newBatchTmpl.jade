@@ -20,9 +20,9 @@
         .recipe.og
         .recipe.fg
         .recipe.ingredients
-            .ingredient.grain(ng-repeat='grain in grainInRecipe') {{grain.name}}
+            .ingredient.grain(ng-repeat='grain in grainInRecipe') {{grain.grain.name}}
                 span.remove(ng-click='removeGrain($index)') Remove
-            .ingredient.hops(ng-repeat='ingredient in hopsInRecipe') {{ingredient.name}}
+            .ingredient.hops(ng-repeat='ingredient in hopsInRecipe') {{ingredient.hops.name}}
                 span.remove(ng-click='removeHops($index)') Remove
-            .ingredient.yeast(ng-repeat='ingredient in yeastInRecipe') {{ingredient.name}}
+            .ingredient.yeast(ng-repeat='ingredient in yeastInRecipe') {{ingredient.yeast.name}}
                 span.remove(ng-click='removeYeast($index)') Remove
