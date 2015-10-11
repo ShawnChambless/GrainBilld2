@@ -572,6 +572,28 @@ header.navigation {
           box-sizing: border-box;
           display: block; } }
 
+.batchInfo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .batchInfo form {
+    width: 100%;
+    max-width: 960px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around; }
+    .batchInfo form input {
+      width: 20%; }
+
 .newBatchWrapper {
   height: 100%;
   display: -webkit-box;
@@ -593,7 +615,9 @@ header.navigation {
     height: 100%;
     width: calc(100%/3);
     overflow-x: scroll;
-    padding: 0 50px; }
+    padding: 0 50px;
+    border-top: 1px solid #477dca;
+    border-radius: 2px; }
     .newBatchWrapper .module.ingredients, .newBatchWrapper .module.ingredientData {
       border-left: 1px solid #477dca; }
     .newBatchWrapper .module.recipeData {
