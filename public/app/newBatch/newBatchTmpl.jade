@@ -1,9 +1,9 @@
-.batchInfo
-    form
-        input(type='text' ng-model='recipeName' placeholder='Recipe name...')
-        input(type='number' ng-model='batchSize' placeholder='Batch size...')
 .newBatchWrapper
     .module.ingredients
+        form
+            input(type='text' ng-model='recipeName' placeholder='Recipe name...')
+            input(type='number' ng-model='batchSize' placeholder='Batch size...')
+
         .inputWrapper
             input#grain(type='submit' ng-click='showGrainData()' value='Grain')
             input#hops(type='submit' ng-click='showHopsData()' value='Hops')
