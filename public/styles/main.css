@@ -27,11 +27,7 @@ button {
           user-select: none;
   vertical-align: middle;
   white-space: nowrap; }
-  button:hover,
-  button:focus, input[type="button"]:hover,
-  input[type="button"]:focus, input[type="reset"]:hover,
-  input[type="reset"]:focus, input[type="submit"]:hover,
-  input[type="submit"]:focus,
+  button:hover, button:focus, input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus,
   button:hover,
   button:focus {
     background-color: #2c5999;
@@ -176,12 +172,9 @@ a {
   text-decoration: none;
   -webkit-transition: color 0.1s linear;
           transition: color 0.1s linear; }
-  a:active,
-  a:focus,
-  a:hover {
+  a:active, a:focus, a:hover {
     color: #2c5999; }
-  a:active,
-  a:focus {
+  a:active, a:focus {
     outline: none; }
 
 hr {
@@ -199,9 +192,7 @@ picture {
 html {
   box-sizing: border-box; }
 
-*,
-*::after,
-*::before {
+*, *::after, *::before {
   box-sizing: inherit; }
 
 html, body {
@@ -256,7 +247,7 @@ section.login {
   padding: 30px;
   width: 40%;
   background: #477dca;
-  border-radius: 3px; }
+  border-radius: 1px; }
   section.login input {
     margin: 10px 0;
     font-size: initial; }
@@ -287,7 +278,7 @@ section.login {
       background: #5b8bd0; }
 
 .flash-error, .flash-success {
-  border-radius: 3px; }
+  border-radius: 1px; }
 
 .flash-alert {
   background-color: #fff6bf;
@@ -300,8 +291,7 @@ section.login {
   .flash-alert a {
     color: #594c00;
     text-decoration: underline; }
-    .flash-alert a:focus,
-    .flash-alert a:hover {
+    .flash-alert a:focus, .flash-alert a:hover {
       color: black; }
 
 .flash-error {
@@ -315,8 +305,7 @@ section.login {
   .flash-error a {
     color: #6a0f13;
     text-decoration: underline; }
-    .flash-error a:focus,
-    .flash-error a:hover {
+    .flash-error a:focus, .flash-error a:hover {
       color: #110203; }
 
 .flash-notice {
@@ -330,8 +319,7 @@ section.login {
   .flash-notice a {
     color: #19375f;
     text-decoration: underline; }
-    .flash-notice a:focus,
-    .flash-notice a:hover {
+    .flash-notice a:focus, .flash-notice a:hover {
       color: #04080e; }
 
 .flash-success {
@@ -345,8 +333,7 @@ section.login {
   .flash-success a {
     color: #333c10;
     text-decoration: underline; }
-    .flash-success a:focus,
-    .flash-success a:hover {
+    .flash-success a:focus, .flash-success a:hover {
       color: black; }
 
 header.navigation {
@@ -357,15 +344,8 @@ header.navigation {
   width: 100%;
   z-index: 999; }
   header.navigation .navigation-wrapper {
-    max-width: 68em;
-    margin-left: auto;
-    margin-right: auto;
     position: relative;
     z-index: 9999; }
-    header.navigation .navigation-wrapper::after {
-      clear: both;
-      content: "";
-      display: table; }
     header.navigation .navigation-wrapper::after {
       clear: both;
       content: "";
@@ -394,8 +374,7 @@ header.navigation {
     @media screen and (min-width: 53.75em) {
       header.navigation .navigation-menu-button {
         display: none; } }
-    header.navigation .navigation-menu-button:focus,
-    header.navigation .navigation-menu-button:hover {
+    header.navigation .navigation-menu-button:focus, header.navigation .navigation-menu-button:hover {
       color: #E4D96F; }
   header.navigation nav {
     float: none;
@@ -403,7 +382,7 @@ header.navigation {
     z-index: 9999999; }
     @media screen and (min-width: 53.75em) {
       header.navigation nav {
-        float: left; } }
+        float: right; } }
   header.navigation ul.navigation-menu {
     -webkit-transform-style: preserve-3d;
     clear: both;
@@ -443,8 +422,7 @@ header.navigation {
       @media screen and (min-width: 53.75em) {
         header.navigation ul li.nav-link a {
           padding-right: 1em; } }
-      header.navigation ul li.nav-link a:focus,
-      header.navigation ul li.nav-link a:hover {
+      header.navigation ul li.nav-link a:focus, header.navigation ul li.nav-link a:hover {
         color: #E4D96F; }
   header.navigation .active-nav-item a {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);

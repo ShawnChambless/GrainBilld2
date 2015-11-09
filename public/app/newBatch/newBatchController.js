@@ -7,6 +7,9 @@ angular.module('GrainBilld')
     $scope.grainInRecipe    = newBatchService.grainInRecipe;
     $scope.hopsInRecipe     = newBatchService.hopsInRecipe;
     $scope.yeastInRecipe    = newBatchService.yeastInRecipe;
+    $scope.grainValues      = newBatchService.grainValues;
+    $scope.hopsValues       = newBatchService.hopsValues;
+    $scope.yeastValues      = newBatchService.yeastValues;
     $scope.grains           = 'grain';
     $scope.hopss            = 'hops';
     $scope.yeasts           = 'yeast';

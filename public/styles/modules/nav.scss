@@ -29,7 +29,7 @@ header.navigation {
 
   .navigation-wrapper {
     @include clearfix;
-    @include outer-container;
+
     position: relative;
     z-index: 9999;
   }
@@ -80,7 +80,7 @@ header.navigation {
     z-index: 9999999;
 
     @include media ($horizontal-bar-mode) {
-      float: left;
+      float: right;
     }
   }
 

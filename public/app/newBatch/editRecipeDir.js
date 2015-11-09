@@ -9,7 +9,8 @@ angular.module('GrainBilld')
         link: function(scope, elem, attrs) {
             elem.on('click', function() {
                 newBatchService.addIngredient(scope.ingredientType, scope.ingredient);
-                scope.$apply(scope.grainInRecipe);
+                scope.$apply(scope.grainInRecipe, scope.hopsInRecipe, scope.yeastInRecipe, scope.grainValues, scope.hopsValues, scope.yeastValues);
+                console.log(scope.hopsValues)
             });
         }
     };
