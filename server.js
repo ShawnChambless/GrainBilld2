@@ -6,6 +6,7 @@ var express     = require( 'express' ),
     passport    = require( './api/passport/config' ),
     compression = require( 'compression' ),
     userCtrl    = require( './api/controllers/userCtrl' ),
+    recipeCtrl  = require( './api/controllers/recipeCtrl' ),
     grainCtrl   = require( './api/controllers/grainCtrl' ),
     hopsCtrl    = require( './api/controllers/hopsCtrl' ),
     yeastCtrl   = require( './api/controllers/yeastCtrl' ),
@@ -42,9 +43,10 @@ app.get('/auth/logout', function(req, res){
 //User endpoints
 
 app.post(   '/api/users',                       userCtrl.create );
-app.get(    '/api/user/',                       userCtrl.getCurrentUser);
+app.get(    '/api/users/getUser',               userCtrl.getCurrentUser);
 app.put(    '/api/users/:user_id',              userCtrl.update );
 app.put(    '/api/users/:user_id/:recipe_id',   userCtrl.updateRecipes);
+app.post(   '/api/users/newRecipe',             recipeCtrl.newRecipe);
 app.delete( '/api/users/:user_id',              userCtrl.remove );
 
 //Database endpoints

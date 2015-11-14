@@ -1,5 +1,5 @@
 angular.module('GrainBilld')
-.service('newBatchService', function() {
+.service('newBatchService', function($http) {
     this.grainInRecipe = [];
     this.hopsInRecipe = [];
     this.yeastInRecipe = [];
@@ -122,4 +122,24 @@ angular.module('GrainBilld')
         return hopUtilization;
     }
 
+    this.saveRecipeToUser = function(recipe, user) {
+        return $http({
+            method: 'POST',
+            url: 'api/users/newRecipe',
+            data: {
+                user: user,
+                newRecipe: {
+                    name: recipe.name,
+                    grain: this.grainInRecipe,
+                    hops: this.hopsInRecipe,
+                    yeast: this.yeastInRecipe,
+                    batchSize: recipe.batchSize,
+                    projectedEfficiency: recipe.efficiency,
+                    isPrivate: recipe.isPrivate
+                }
+            }
+        }).then(function(resp) {
+            return resp;
+        });
+    };
 });

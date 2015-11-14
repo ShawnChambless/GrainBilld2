@@ -10,12 +10,16 @@
       <input id="hops" type="submit" ng-click="showHopsData()" value="Hops"/>
       <input id="yeast" type="submit" ng-click="showYeastData()" value="Yeast"/>
     </div>
-    <div class="recipe title">Title: {{ recipe.name }}</div>
-    <div class="recipe abv">ABV: {{ yeastValues.abv }}</div>
-    <div class="recipe srm">SRM: {{ grainValues.srm }}</div>
-    <div class="recipe ibu">IBU: {{ hopsValues.ibu }}</div>
-    <div class="recipe og">OG: {{ grainValues.og }}</div>
-    <div class="recipe fg">FG: {{ grainValues.fg }}</div>
+    <div ng-show="recipe.name" class="recipe title">Title: {{ recipe.name }}</div>
+    <div ng-show="yeastValues.abv" class="recipe abv">ABV: {{ yeastValues.abv }}</div>
+    <div ng-show="grainValues.srm" class="recipe srm">SRM: {{ grainValues.srm }}</div>
+    <div ng-show="hopsValues.ibu" class="recipe ibu">IBU: {{ hopsValues.ibu }}</div>
+    <div ng-show="grainValues.og" class="recipe og">OG: {{ grainValues.og }}</div>
+    <div ng-show="grainValues.fg" class="recipe fg">FG: {{ grainValues.fg }}</div>
+    <input type="submit" value="Save" ng-click="saveRecipeToUser(recipe)" ng-show="hopsValues && recipe && yeastValues && grainValues" class="saveRecipeBtn"/>
+    <label for="privateCheckbox">Private?
+      <input type="checkbox" ng-model="recipe.isPrivate" ng-checked="true" id="privateCheckbox" class="privateBtn"/>
+    </label>
   </div>
   <div class="module ingredientData">
     <input ng-show="showGrain" type="text" ng-model="ingredientFilter" placeholder="Filter grain..."/>

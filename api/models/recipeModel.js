@@ -19,6 +19,7 @@ var recipeSchema = {
     batchSize:      { type: Number },
     srm:            { type: Number },
     efficiency:     { type: Number },
+    isPrivate:      { type: Boolean, default: true },
     user:           { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 };
 

@@ -7,12 +7,16 @@
             input#grain(type='submit' ng-click='showGrainData()' value='Grain')
             input#hops(type='submit' ng-click='showHopsData()' value='Hops')
             input#yeast(type='submit' ng-click='showYeastData()' value='Yeast')
-        .recipe.title Title: {{ recipe.name }}
-        .recipe.abv ABV: {{ yeastValues.abv }}
-        .recipe.srm SRM: {{ grainValues.srm }}
-        .recipe.ibu IBU: {{ hopsValues.ibu }}
-        .recipe.og OG: {{ grainValues.og }}
-        .recipe.fg FG: {{ grainValues.fg }}
+        .recipe.title(ng-show='recipe.name') Title: {{ recipe.name }}
+        .recipe.abv(ng-show='yeastValues.abv') ABV: {{ yeastValues.abv }}
+        .recipe.srm(ng-show='grainValues.srm') SRM: {{ grainValues.srm }}
+        .recipe.ibu(ng-show='hopsValues.ibu') IBU: {{ hopsValues.ibu }}
+        .recipe.og(ng-show='grainValues.og') OG: {{ grainValues.og }}
+        .recipe.fg(ng-show='grainValues.fg') FG: {{ grainValues.fg }}
+        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe)' ng-show!='hopsValues && recipe && yeastValues && grainValues')
+        label(for='privateCheckbox') Private?
+            input.privateBtn(type='checkbox' ng-model='recipe.isPrivate' ng-checked='true' id='privateCheckbox')
+        
     .module.ingredientData
         input(ng-show='showGrain' type='text' ng-model='ingredientFilter' placeholder='Filter grain...')
         input(ng-show='showGrain' type='number' ng-model='grain.amount' placeholder='Pounds of grain...')

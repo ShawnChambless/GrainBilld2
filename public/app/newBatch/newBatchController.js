@@ -1,6 +1,6 @@
 angular.module('GrainBilld')
-.controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast) {
-
+.controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast, $rootScope) {
+        console.log($rootScope.currentUser.id);
     $scope.grainInDb        = getGrain;
     $scope.hopsInDb         = getHops;
     $scope.yeastInDb        = getYeast;
@@ -42,6 +42,14 @@ angular.module('GrainBilld')
 
     $scope.removeYeast = function(index) {
         newBatchService.yeastInRecipe.splice(index, 1);
+    };
+
+    $scope.saveRecipeToUser = function(recipe) {
+        var user = $rootScope.currentUser.id;
+
+        newBatchService.saveRecipeToUser(recipe, user).then(function(resp) {
+            $scope.grainValues = $scope.hopsValues = $scope.yeastValues = $scope.grainInRecipe = $scope.hopsInRecipe = $scope.yeastInRecipe = $scope.recipe = '';
+        });
     };
 
 });
