@@ -1,28 +1,37 @@
 .newBatchWrapper
     .module.ingredients
+        form
+            input(type='text' ng-model='recipe.name' placeholder='Recipe name...')
+            input(type='number' ng-model='recipe.batchSize' placeholder='Batch size...')
         .inputWrapper
             input#grain(type='submit' ng-click='showGrainData()' value='Grain')
             input#hops(type='submit' ng-click='showHopsData()' value='Hops')
             input#yeast(type='submit' ng-click='showYeastData()' value='Yeast')
+        .recipe.title(ng-show='recipe.name') Title: {{ recipe.name }}
+        .recipe.abv(ng-show='yeastValues.abv') ABV: {{ yeastValues.abv }}
+        .recipe.srm(ng-show='grainValues.srm') SRM: {{ grainValues.srm }}
+        .recipe.ibu(ng-show='hopsValues.ibu') IBU: {{ hopsValues.ibu }}
+        .recipe.og(ng-show='grainValues.og') OG: {{ grainValues.og }}
+        .recipe.fg(ng-show='grainValues.fg') FG: {{ grainValues.fg }}
+        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe)' ng-show!='hopsValues && recipe && yeastValues && grainValues')
+        label(for='privateCheckbox') Private?
+            input.privateBtn(type='checkbox' ng-model='recipe.isPrivate' ng-checked='true' id='privateCheckbox')
+        
     .module.ingredientData
         input(ng-show='showGrain' type='text' ng-model='ingredientFilter' placeholder='Filter grain...')
+        input(ng-show='showGrain' type='number' ng-model='grain.amount' placeholder='Pounds of grain...')
         input(ng-show='showHops' type='text' ng-model='ingredientFilter' placeholder='Filter hops...')
+        input(ng-show='showHops' type='number' ng-model='hops.boilTime' placeholder='Boil time...')
         input(ng-show='showYeast' type='text' ng-model='ingredientFilter' placeholder='Filter yeast...')
         
-        edit-recipe(ng-show='showGrain' ingredient-type='grains' ingredient='grain' ng-repeat='grain in grainInDb | filter:ingredientFilter')
-        edit-recipe(ng-show='showHops' ingredient-type='hopss' ingredient='hops' ng-repeat='hops in hopsInDb | filter:ingredientFilter')
-        edit-recipe(ng-show='showYeast' ingredient-type='yeasts' ingredient='yeast' ng-repeat='yeast in yeastInDb | filter:ingredientFilter')
+        edit-recipe(ng-show='showGrain' ingredient-type='grains' ingredient='grain' ng-repeat='grain in grainInDb | filter:{name: ingredientFilter}')
+        edit-recipe(ng-show='showHops' ingredient-type='hopss' ingredient='hops' ng-repeat='hops in hopsInDb | filter:{name: ingredientFilter}')
+        edit-recipe(ng-show='showYeast' ingredient-type='yeasts' ingredient='yeast' ng-repeat='yeast in yeastInDb | filter:{name: ingredientFilter}')
     .module.recipeData
-        .recipe.title
-        .recipe.abv
-        .recipe.srm
-        .recipe.ibu
-        .recipe.og
-        .recipe.fg
         .recipe.ingredients
-            .ingredient.grain(ng-repeat='grain in grainInRecipe') {{grain.grain.name}}
+            .ingredient.grain(ng-repeat='grain in grainInRecipe') {{grain.name}}
                 span.remove(ng-click='removeGrain($index)') Remove
-            .ingredient.hops(ng-repeat='ingredient in hopsInRecipe') {{ingredient.hops.name}}
+            .ingredient.hops(ng-repeat='hops in hopsInRecipe') {{hops.name}}
                 span.remove(ng-click='removeHops($index)') Remove
-            .ingredient.yeast(ng-repeat='ingredient in yeastInRecipe') {{ingredient.yeast.name}}
+            .ingredient.yeast(ng-repeat='yeast in yeastInRecipe') {{yeast.name}}
                 span.remove(ng-click='removeYeast($index)') Remove

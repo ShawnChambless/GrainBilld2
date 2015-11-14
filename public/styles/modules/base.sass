@@ -10,3 +10,8 @@ body
 h1.title
     font-weight: 400
     font-size: 3em
+input
+    &:focus
+        outline: none
+input[type='number'], input[type='text'], input[type='password']
+    +fastTransition(all)

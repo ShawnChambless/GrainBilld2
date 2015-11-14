@@ -1,5 +1,5 @@
 var mongoose    = require('mongoose') ,
-    User        = mongoose.model('User', require('../models/userModel.js')) ;
+    User        = mongoose.model('User', require('../models/userModel')) ;
 
 module.exports = {
 

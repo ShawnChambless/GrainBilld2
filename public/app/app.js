@@ -1,6 +1,28 @@
-angular.module('GrainBilld', ['ui.router', 'angular-loading-bar'])
+angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
+.run(function($rootScope, $http, $cookies) {
+        $rootScope.currentUser = $cookies.getObject('user');
+        console.log($rootScope.currentUser);
+        if(!$rootScope.currentUser) getCurrentUser();
+    function getCurrentUser() {
+        return $http({
+            method: 'GET',
+            url: '/api/users/getUser'
+        }).then(function(resp) {
+            if(resp.data) {
+                $cookies.putObject('user', {
+                    id: resp.data._id,
+                    email: resp.data.email,
+                    favorites: resp.data.favorites,
+                    firstName: resp.data.firstName,
+                    recipes: resp.data.recipes
+                });
+                $rootScope.currentUser = resp.data;
+            }
+            else return;
+        });
+    }
+})
 .config(function($stateProvider, $urlRouterProvider) {
-
     $urlRouterProvider.otherwise('/login');
     $stateProvider
         .state('login', {

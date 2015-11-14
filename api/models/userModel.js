@@ -6,7 +6,15 @@ var userSchema = {
   lastName:   { type: String, required: true },
   email:      { type: String, required: true, unique: true },
   password:   { type: String, required: true },
-  recipes:    [ { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } ],
+  recipes:    [ {
+      name:                { type: String },
+      grain:               { type: Object },
+      hops:                { type: Object },
+      yeast:               { type: Object },
+      batchSize:           { type: Number },
+      projectedEfficiency: { type: Number },
+      actualEfficiency:    { type: Number }
+   } ],
   favorites:  [ { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } ]
 };
 

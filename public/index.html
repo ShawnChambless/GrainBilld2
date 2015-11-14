@@ -18,7 +18,7 @@
                 <li><a ng-href="#/CommunityRecipes">Community Recipes</a></li>
               </ul>
             </li>
-            <li class="nav-link logout"><a ng-href="/auth/logout">Log Out</a>
+            <li class="nav-link logout"><a ng-href="/auth/logout" ng-click="logOut()" ng-if="currentUser">Log Out</a><a ng-href="#/login" ng-if="!currentUser">Log In</a>
             </li>
           </ul>
         </nav>
@@ -27,6 +27,7 @@
     <ui-view></ui-view>
     <script src="components/jquery/dist/jquery.min.js"></script>
     <script src="components/angular/angular.js"></script>
+    <script src="components/angular-cookies/angular-cookies.js"></script>
     <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="components/angular-loading-bar/build/loading-bar.js"></script>
     <script src="app/scripts.min.js"></script>
