@@ -39,7 +39,8 @@ module.exports = {
   } ,
 
   getCurrentUser: function(req, res){
-    return res.status(200).json(req.user);
+      if(req.user) return res.status(200).json(req.user);
+      else return res.json('');
   },
 
   updateRecipes: function(req, res) {
@@ -84,6 +85,13 @@ module.exports = {
     User.findByIdAndRemove(req.params.user_id, function(err){
       if (err) return res.status(500).json(err);
       return res.status(200).send('User ' + req.params.user_id + ' has been deleted');
+    });
+  },
+
+  getRecipes: function(req, res) {
+    User.findById(req.params.userId, function(err, user) {
+        if(err) return res.status(500).json(err);
+        return res.status(200).json(user.recipes);
     });
   }
 

@@ -1,0 +1,11 @@
+
+<div class="container">
+  <div class="row">
+    <div ng-repeat="recipe in recipes track by $index" class="col-3">
+      <div class="recipeWrapper">
+        <header>{{recipe.name}}</header>
+        <div class="stats"><span ng-repeat="grain in recipe.grain">{{grain.amount}}lbs {{grain.name}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

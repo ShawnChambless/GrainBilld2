@@ -1,0 +1,7 @@
+.container
+    .row
+        .col-3(ng-repeat='recipe in recipes track by $index')
+            .recipeWrapper
+                header {{recipe.name}}
+                .stats
+                    span(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}

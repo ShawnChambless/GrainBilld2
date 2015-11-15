@@ -1,0 +1,15 @@
+.container
+    height: 100%
+    +outer-container
+.row
+    +row
+    .col-3
+        +span-columns(3)
+        +media(max-width 760px)
+            +span-columns(6)
+        .recipeWrapper
+            text-align: center
+header
+    text-transform: uppercase
+    font-size: 1.3em
+    font-weight: 500

@@ -1,8 +1,8 @@
 
 <section class="login">
-  <form ng-show="showLogin" class="loginForm">
+  <form ng-hide="showLogin" class="loginForm">
     <header>Log In</header>
-    <p ng-click="showRegister = true; showLogin = false">Need an account?</p>
+    <p ng-click="showRegister = true; showLogin = true">Need an account?</p>
     <input type="email" ng-model="email" placeholder="Email..."/>
     <input type="password" ng-model="password" placeholder="Password..."/>
     <input type="submit" ng-click="login(email, password)" value="Log In"/><a ng-href="#/NewBatch">
@@ -11,7 +11,7 @@
   </form>
   <form ng-show="showRegister" class="registerForm">
     <header>Register</header>
-    <p ng-click="showLogin = true; showRegister = false">Already have an account?</p>
+    <p ng-click="showLogin = false; showRegister = false">Already have an account?</p>
     <input type="text" ng-model="firstName" placeholder="First name..."/>
     <input type="text" ng-model="lastName" placeholder="Last name..."/>
     <input type="email" ng-model="email" placeholder="Email..."/>

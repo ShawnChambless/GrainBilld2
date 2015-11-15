@@ -6,10 +6,11 @@ html(lang='en')
     body(ng-app='GrainBilld')
         header.navigation(role='banner')
           .navigation-wrapper
-            a.logo(ng-href='javascript:void(0)')
+            a.logo(ui-sref='home')
               span.octicon.octicon-beer
-            a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') MENU
-            nav(role='navigation')
+              span.name   Grain Billd
+            a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') Menu
+            nav(role='navigation' ng-controller='navCtrl')
               ul#js-navigation-menu.navigation-menu.show
                 li.nav-link
                   a(ng-href='#/home') Home
@@ -21,12 +22,12 @@ html(lang='en')
                   a(ng-href='javascript:void(0)') Recipes
                   ul.submenu
                     li
-                      a(ng-href='#/MyRecipes') My Recipes
+                      a(ng-href='#/MyRecipes/{{currentUser.id}}') My Recipes
                     li
                       a(ng-href='#/CommunityRecipes') Community Recipes
                 li.nav-link.logout
-                    a(ng-href='/auth/logout' ng-click='logOut()' ng-if='currentUser') Log Out
-                    a(ng-href='#/login' ng-if='!currentUser') Log In
+                    a(ng-href='/auth/logout' ng-click='logOut()' ng-show='currentUser') Log Out
+                    a(ng-href='#/login' ng-show='!currentUser') Log In
                     //-   ul.submenu
                     //-     li
                     //-       a(href='javascript:void(0)') Sub-submenu Item

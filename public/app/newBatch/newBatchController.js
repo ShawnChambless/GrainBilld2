@@ -1,6 +1,5 @@
 angular.module('GrainBilld')
 .controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast, $rootScope) {
-        console.log($rootScope.currentUser.id);
     $scope.grainInDb        = getGrain;
     $scope.hopsInDb         = getHops;
     $scope.yeastInDb        = getYeast;
