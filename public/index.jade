@@ -26,8 +26,8 @@ html(lang='en')
                     li
                       a(ng-href='#/CommunityRecipes') Community Recipes
                 li.nav-link.logout
-                    a(ng-href='/auth/logout' ng-click='logOut()' ng-show='currentUser') Log Out
-                    a(ng-href='#/login' ng-show='!currentUser') Log In
+                    a(ng-href='/auth/logout' ng-click='logOut()' ng-show='showLogIn') Log Out
+                    a(ng-href='#/login' ng-hide='showLogIn') Log In
                     //-   ul.submenu
                     //-     li
                     //-       a(href='javascript:void(0)') Sub-submenu Item
@@ -41,10 +41,13 @@ html(lang='en')
                     //-     li
                     //-       a(href='javascript:void(0)') An Item
         ui-view
+        //- script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+        //- script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js")
+        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js')
+        //- script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min.js')
         script(src='components/jquery/dist/jquery.min.js')
         script(src='components/angular/angular.js')
         script(src='components/angular-cookies/angular-cookies.js')
-        //- script(src='ajax.googleapis.com/ajax/libs/angularjs/1.4.17/angular-cookies.js')
         script(src='components/angular-ui-router/release/angular-ui-router.js')
         script(src='components/angular-loading-bar/build/loading-bar.js')
         script(src='app/scripts.min.js')

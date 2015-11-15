@@ -18,7 +18,7 @@
                 <li><a ng-href="#/CommunityRecipes">Community Recipes</a></li>
               </ul>
             </li>
-            <li class="nav-link logout"><a ng-href="/auth/logout" ng-click="logOut()" ng-show="currentUser">Log Out</a><a ng-href="#/login" ng-show="!currentUser">Log In</a>
+            <li class="nav-link logout"><a ng-href="/auth/logout" ng-click="logOut()" ng-show="showLogIn">Log Out</a><a ng-href="#/login" ng-hide="showLogIn">Log In</a>
             </li>
           </ul>
         </nav>

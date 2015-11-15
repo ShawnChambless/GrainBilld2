@@ -13,7 +13,6 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
                     firstName: resp.data.firstName
                 });
                 $rootScope.currentUser = resp.data;
-                return resp.data;
             }
             else return;
         });
