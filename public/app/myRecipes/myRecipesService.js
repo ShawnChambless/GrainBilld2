@@ -8,4 +8,13 @@ angular.module('GrainBilld')
         });
     };
 
+    this.removeRecipe = function(recipeId) {
+        return $http({
+            method: 'PUT',
+            url: '/api/user/recipes/remove/' + recipeId
+        }).then(function(resp) {
+            return resp.data;
+        });
+    };
+
 });

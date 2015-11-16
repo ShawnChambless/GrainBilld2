@@ -161,7 +161,6 @@ h4,
 h5,
 h6 {
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-  font-size: 1em;
   line-height: 1.2;
   margin: 0 0 0.75em; }
 
@@ -362,7 +361,7 @@ header.navigation {
     height: 60px;
     padding-left: 1em;
     padding-right: 2em;
-    width: 20%;
+    min-width: 20%;
     color: #E4D96F; }
     header.navigation .logo:hover {
       color: white; }
@@ -600,7 +599,7 @@ header.navigation {
       .newBatchWrapper .module .inputWrapper input {
         display: block;
         margin: 20px auto;
-        width: 97%; }
+        width: 100%; }
     .newBatchWrapper .module.ingredientData input {
       margin: 20px auto; }
     .newBatchWrapper .module.ingredientData p {
@@ -619,41 +618,38 @@ header.navigation {
       .newBatchWrapper .module.recipeData span:hover {
         color: #ff3333; }
 
-.container {
+.my-recipes-wrapper {
   height: 100%;
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto; }
-  .container::after {
-    clear: both;
-    content: "";
-    display: table; }
+  overflow: scroll;
+  padding-bottom: 5em; }
 
-.row {
-  display: block; }
-  .row::after {
-    clear: both;
-    content: "";
-    display: table; }
-  .row .col-3 {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%; }
-    .row .col-3:last-child {
-      margin-right: 0; }
-    @media screen and (max-width: 760px) {
-      .row .col-3 {
-        float: left;
-        display: block;
-        margin-right: 2.35765%;
-        width: 48.82117%; }
-        .row .col-3:last-child {
-          margin-right: 0; } }
-    .row .col-3 .recipeWrapper {
-      text-align: center; }
+.container {
+  max-width: 960px;
+  margin: 0 auto; }
+  .container.my-recipes {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+
+.col-3 {
+  padding: 1em;
+  background: #477dca;
+  color: #f7f7f7;
+  margin: .5em;
+  border-radius: 1px;
+  width: 25%; }
+  .col-3 .recipeWrapper {
+    margin: 1em;
+    text-align: center; }
 
 header {
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 1.3em;
   font-weight: 500; }

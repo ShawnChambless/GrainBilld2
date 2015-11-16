@@ -86,7 +86,7 @@ angular.module('GrainBilld')
     }
 
     function calcFG(og, yeastAttenuation) {
-        var fg = 1 + ((og * (1 - (yeastAttenuation/100))) / 1000);
+        var fg = 1 + ((og * (1 - (yeastAttenuation))) / 1000);
         return fg;
     }
 
@@ -122,7 +122,7 @@ angular.module('GrainBilld')
         return hopUtilization;
     }
 
-    this.saveRecipeToUser = function(recipe, user) {
+    this.saveRecipeToUser = function(recipe, isPrivate, user) {
         return $http({
             method: 'POST',
             url: 'api/users/newRecipe',
@@ -135,7 +135,7 @@ angular.module('GrainBilld')
                     yeast: this.yeastInRecipe,
                     batchSize: recipe.batchSize,
                     projectedEfficiency: recipe.efficiency,
-                    isPrivate: recipe.isPrivate
+                    isPrivate: isPrivate
                 }
             }
         }).then(function(resp) {

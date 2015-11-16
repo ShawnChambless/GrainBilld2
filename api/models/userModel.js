@@ -13,7 +13,8 @@ var userSchema = {
       yeast:               { type: Object },
       batchSize:           { type: Number },
       projectedEfficiency: { type: Number },
-      actualEfficiency:    { type: Number }
+      actualEfficiency:    { type: Number },
+      isPrivate:           { type: Boolean, default: true }
    } ],
   favorites:  [ { type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' } ]
 };

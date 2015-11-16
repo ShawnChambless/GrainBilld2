@@ -1,0 +1,5 @@
+.container
+    div(ng-repeat='recipe in recipes')
+        h2 {{ recipe.name }}
+        h3 Submitted by: {{ recipe.user.firstName }} {{ recipe.user.lastName }}
+        

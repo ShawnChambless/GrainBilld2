@@ -1,7 +1,8 @@
 angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
 .run(function($rootScope, $http, $cookies) {
         $rootScope.currentUser = $cookies.getObject('user');
-        if(!$rootScope.currentUser) {console.time('getCurrentUser'); getCurrentUser();}
+        if($rootScope.currentUser ) $rootScope.showLogIn = true;
+        else getCurrentUser();
     function getCurrentUser() {
         return $http({
             method: 'GET',
@@ -12,6 +13,7 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
                     id: resp.data._id,
                     firstName: resp.data.firstName
                 });
+                $rootScope.showLogIn = true;
                 $rootScope.currentUser = resp.data;
             }
             else return;
@@ -95,6 +97,15 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
         .state('communityRecipes', {
             url: '/CommunityRecipes',
             controller: 'communityRecipesController',
-            templateUrl: 'app/CommunityRecipes/communityRecipesTmpl.html'
+            templateUrl: 'app/CommunityRecipes/communityRecipesTmpl.html',
+            resolve: {
+                getCommunityRecipes: function($state, communityRecipesService) {
+                    return communityRecipesService.getCommunityRecipes().then(function(resp) {
+                        return {recipes: resp.data};
+                    }, function(err) {
+                        $state.go('home');
+                    });
+                }
+            }
         });
 });

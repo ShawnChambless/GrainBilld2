@@ -43,17 +43,6 @@ module.exports = {
       else return res.json('');
   },
 
-  updateRecipes: function(req, res) {
-      User.findById(req.params.user_id, function(err, user) {
-          if(err) return res.status(500).json(err);
-          user.recipes.push(new mongoose.Types.ObjectId(req.params.recipe_id));
-          user.save(function(err, updatedUser) {
-              if(err) return res.status(500).json(err);
-              return res.json(updatedUser);
-          });
-      });
-  },
-
   update: function(req, res){
     User.findByIdAndUpdate(req.params.user_id, req.body, {new: true}, function(err, updatedUser){
       if (err) return res.status(500).json(err);
@@ -93,6 +82,13 @@ module.exports = {
         if(err) return res.status(500).json(err);
         return res.status(200).json(user.recipes);
     });
+  },
+
+  removeRecipe: function(req, res) {
+      User.update({}, { $pull: { recipes: { _id: req.params.recipeId } } }, { multi: true }, function(err, recipes) {
+          if(err) return res.status(500).json(err);
+          return res.status(200).json('Recipe', req.params.recipeId, 'has been deleted.');
+      });
   }
 
 };

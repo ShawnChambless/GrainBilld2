@@ -39,7 +39,7 @@ header.navigation {
     height: $navigation-height;
     padding-left: $navigation-padding;
     padding-right: 2em;
-    width: 20%;
+    min-width: 20%;
     color: $straw;
     &:hover {
         color: $logo-color-hover;

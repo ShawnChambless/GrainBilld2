@@ -1,10 +1,15 @@
 
-<div class="container">
-  <div class="row">
+<div class="my-recipes-wrapper">
+  <div class="container my-recipes">
     <div ng-repeat="recipe in recipes track by $index" class="col-3">
-      <div class="recipeWrapper">
-        <header>{{recipe.name}}</header>
-        <div class="stats"><span ng-repeat="grain in recipe.grain">{{grain.amount}}lbs {{grain.name}}</span></div>
+      <div class="recipeWrapper"><span ng-click="removeRecipe(recipe._id, $index)">Remove</span>
+        <header> 
+          <h3>{{recipe.name}} </h3>
+        </header>
+        <h4>Private: {{ recipe.isPrivate }}</h4>
+        <div class="stats">
+          <div ng-repeat="grain in recipe.grain">{{grain.amount}}lbs {{grain.name}}</div>
+        </div>
       </div>
     </div>
   </div>

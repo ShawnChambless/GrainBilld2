@@ -1,7 +1,10 @@
-.container
-    .row
+.my-recipes-wrapper
+    .container.my-recipes
         .col-3(ng-repeat='recipe in recipes track by $index')
             .recipeWrapper
-                header {{recipe.name}}
+                span(ng-click='removeRecipe(recipe._id, $index)') Remove
+                header 
+                    h3 {{recipe.name}} 
+                h4 Private: {{ recipe.isPrivate }}
                 .stats
-                    span(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}
+                    div(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}
