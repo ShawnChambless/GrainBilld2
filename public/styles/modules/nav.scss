@@ -22,7 +22,6 @@ header.navigation {
 
   background-color: $navigation-background;
   font-size: 1.2em;
-  border-bottom: 1px solid darken($navigation-background, 10);
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
@@ -35,6 +34,7 @@ header.navigation {
   }
 
   .logo {
+    margin-top: -5px;
     float: left;
     height: $navigation-height;
     padding-left: $navigation-padding;

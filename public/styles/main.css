@@ -10,7 +10,7 @@ button {
   -o-appearance: none;
   appearance: none;
   -webkit-font-smoothing: antialiased;
-  background-color: #477dca;
+  background-color: #3090C7;
   border-radius: 1px;
   border: none;
   color: #fff;
@@ -31,7 +31,7 @@ button {
   button:hover, button:focus, input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus,
   button:hover,
   button:focus {
-    background-color: #2c5999;
+    background-color: #216389;
     color: #fff; }
   button:disabled, input[type="button"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled,
   button:disabled {
@@ -77,7 +77,7 @@ textarea {
   input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, textarea:focus,
   select[multiple=multiple]:focus,
   textarea:focus {
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(55, 112, 192, 0.7);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(43, 129, 178, 0.7);
     outline: none; }
 
 textarea {
@@ -168,12 +168,12 @@ p {
   margin: 0 0 0.75em; }
 
 a {
-  color: #477dca;
+  color: #3090C7;
   text-decoration: none;
   -webkit-transition: color 0.1s linear;
           transition: color 0.1s linear; }
   a:active, a:focus, a:hover {
-    color: #2c5999; }
+    color: #216389; }
   a:active, a:focus {
     outline: none; }
 
@@ -224,7 +224,7 @@ input[type='number'], input[type='text'], input[type='password'] {
 
 p.announcement {
   text-align: center;
-  color: #477dca;
+  color: #3090C7;
   font-size: 1.4em; }
 
 section.login, section.flashMessages {
@@ -251,7 +251,7 @@ section.login {
   margin: 10% auto 0 auto;
   padding: 30px;
   width: 40%;
-  background: #477dca;
+  background: #3090C7;
   border-radius: 1px; }
   section.login input {
     margin: 10px 0;
@@ -273,14 +273,14 @@ section.login {
     width: 100%;
     -webkit-transition: all 90ms ease-in-out;
             transition: all 90ms ease-in-out;
-    background: #264d85; }
+    background: #1c5575; }
     section.login input[type='submit']:hover {
-      background: #5b8bd0; }
+      background: #409cd1; }
     section.login input[type='submit']:focus {
-      box-shadow: 0 0 1px 1px #477dca, 0 0 1px 1px #477dca;
+      box-shadow: 0 0 1px 1px #3090C7, 0 0 1px 1px #3090C7;
       border: none;
       outline: none;
-      background: #5b8bd0; }
+      background: #409cd1; }
 
 .flash-error, .flash-success {
   border-radius: 1px; }
@@ -342,9 +342,8 @@ section.login {
       color: black; }
 
 header.navigation {
-  background-color: #477dca;
+  background-color: #3090C7;
   font-size: 1.2em;
-  border-bottom: 1px solid #3264ac;
   min-height: 60px;
   width: 100%;
   z-index: 999;
@@ -357,6 +356,7 @@ header.navigation {
       content: "";
       display: table; }
   header.navigation .logo {
+    margin-top: -5px;
     float: left;
     height: 60px;
     padding-left: 1em;
@@ -406,7 +406,7 @@ header.navigation {
         margin: 0;
         padding: 0; } }
   header.navigation ul li.nav-link {
-    background: #477dca;
+    background: #3090C7;
     display: block;
     line-height: 60px;
     overflow: hidden;
@@ -501,13 +501,13 @@ header.navigation {
             border-bottom-right-radius: 1px;
             padding-bottom: 0.7em; } }
       header.navigation ul.submenu li a {
-        background-color: #3b75c7;
+        background-color: #2d87bb;
         display: inline-block;
         text-align: right;
         width: 100%; }
         @media screen and (min-width: 53.75em) {
           header.navigation ul.submenu li a {
-            background-color: #477dca;
+            background-color: #3090C7;
             padding-left: 1em;
             text-align: left;
             width: 12em; } }
@@ -529,9 +529,9 @@ header.navigation {
       position: relative; }
       header.navigation .search-bar form input[type=search] {
         box-sizing: border-box;
-        background: #5b8bd0;
+        background: #409cd1;
         border-radius: 2px;
-        border: 1px solid #3770c0;
+        border: 1px solid #2b81b2;
         color: rgba(255, 255, 255, 0.9);
         font-size: 0.9em;
         font-style: italic;
@@ -542,7 +542,7 @@ header.navigation {
           header.navigation .search-bar form input[type=search] {
             width: 100%; } }
       header.navigation .search-bar form button[type=submit] {
-        background: #5b8bd0;
+        background: #409cd1;
         border: none;
         bottom: 0.3em;
         left: auto;
@@ -590,10 +590,10 @@ header.navigation {
     padding: 0 50px;
     border-radius: 2px; }
     .newBatchWrapper .module.ingredients, .newBatchWrapper .module.ingredientData {
-      border-left: 1px solid #477dca; }
+      border-left: 1px solid #3090C7; }
     .newBatchWrapper .module.recipeData {
-      border-right: 1px solid #477dca;
-      border-left: 1px solid #477dca; }
+      border-right: 1px solid #3090C7;
+      border-left: 1px solid #3090C7; }
     .newBatchWrapper .module .inputWrapper {
       margin-top: 20px; }
       .newBatchWrapper .module .inputWrapper input {
@@ -603,13 +603,13 @@ header.navigation {
     .newBatchWrapper .module.ingredientData input {
       margin: 20px auto; }
     .newBatchWrapper .module.ingredientData p {
-      color: #264d85;
+      color: #1c5575;
       cursor: pointer; }
       .newBatchWrapper .module.ingredientData p:hover {
-        color: #5b8bd0; }
+        color: #409cd1; }
     .newBatchWrapper .module.recipeData span {
       margin-left: 30px;
-      color: #477dca;
+      color: #3090C7;
       font-size: .7em;
       cursor: pointer;
       padding: 3px;
@@ -640,7 +640,7 @@ header.navigation {
 
 .col-3 {
   padding: 1em;
-  background: #477dca;
+  background: #3090C7;
   color: #f7f7f7;
   margin: .5em;
   border-radius: 1px;
