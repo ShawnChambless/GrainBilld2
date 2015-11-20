@@ -78,10 +78,13 @@ module.exports = {
   },
 
   getRecipes: function(req, res) {
-    User.findById(req.params.userId, function(err, user) {
+    User.findById(req.params.userId)
+    .populate('recipes')
+    .exec(function(err, recipes) {
         if(err) return res.status(500).json(err);
-        return res.status(200).json(user.recipes);
+        return res.status(200).json(recipes.recipes);
     });
+
   },
 
   removeRecipe: function(req, res) {

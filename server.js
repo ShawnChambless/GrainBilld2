@@ -65,7 +65,7 @@ app.get(    '/api/recipes/community',    recipeCtrl.getAllRecipes);
     app.post(   '/api/database/ingredients/yeast',      yeastCtrl.addYeast);
 mongoose
     .set('debug', true)
-    .connect('mongodb://localhost:27017/brewabatch', function() {
+    .connect('mongodb://localhost:27017/grainbilld', function() {
     console.log('Mongo is also Listening');
 });
 httpServer.listen(port, function() {

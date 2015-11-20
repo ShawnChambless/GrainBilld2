@@ -128,7 +128,7 @@ angular.module('GrainBilld')
             url: 'api/users/newRecipe',
             data: {
                 user: user,
-                newRecipe: {
+                recipe: {
                     name: recipe.name,
                     grain: this.grainInRecipe,
                     hops: this.hopsInRecipe,

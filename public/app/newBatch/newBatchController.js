@@ -46,8 +46,7 @@ angular.module('GrainBilld')
     };
 
     $scope.saveRecipeToUser = function(recipe, isPrivate) {
-        var user = $rootScope.currentUser.id;
-
+        var user = $scope.currentUser.id;
         newBatchService.saveRecipeToUser(recipe, isPrivate, user).then(function(resp) {
             $scope.grainValues = $scope.hopsValues = $scope.yeastValues = 0;
             newBatchService.grainValues = newBatchService.hopsValues = newBatchService.yeastValues = 0;

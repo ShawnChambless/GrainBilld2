@@ -1,7 +1,17 @@
 
-<div class="container">
-  <div ng-repeat="recipe in recipes">
-    <h2>{{ recipe.name }}</h2>
-    <h3>Submitted by: {{ recipe.user.firstName }} {{ recipe.user.lastName }}</h3>
+<div class="my-recipes-wrapper">
+  <div class="container my-recipes">
+    <div ng-repeat="recipe in recipes track by $index" class="col-3">
+      <div class="recipeWrapper"><span ng-click="removeRecipe(recipe._id, $index)" ng-show="recipe.user == currentUser.id">Remove</span>
+        <header> 
+          <h3>{{recipe.name}} </h3>
+        </header>
+        <h4>Private: {{ recipe.isPrivate }}</h4>
+        <div class="stats">
+          <div ng-repeat="grain in recipe.grain">{{grain.amount}}lbs {{grain.name}}</div>
+          <div ng-repeat="hops in recipe.hops">{{hops.amount}}oz {{hops.boilTime}}mins {{hops.name}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

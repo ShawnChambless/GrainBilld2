@@ -85,6 +85,7 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
                 checkUserLoggedIn: function($state, $rootScope, myRecipesService) {
                     if($rootScope.currentUser) {
                         return myRecipesService.getRecipes($rootScope.currentUser.id).then(function(resp) {
+
                             return {recipes: resp.data};
                         }, function(err) {
                             $state.go('home');
@@ -101,6 +102,7 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
             resolve: {
                 getCommunityRecipes: function($state, communityRecipesService) {
                     return communityRecipesService.getCommunityRecipes().then(function(resp) {
+                        console.log(resp.data);
                         return {recipes: resp.data};
                     }, function(err) {
                         $state.go('home');
