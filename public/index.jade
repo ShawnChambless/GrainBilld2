@@ -6,10 +6,11 @@ html(lang='en')
     body(ng-app='GrainBilld')
         header.navigation(role='banner')
           .navigation-wrapper
-            a.logo(ng-href='javascript:void(0)')
+            a.logo(ui-sref='home')
               span.octicon.octicon-beer
-            a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') MENU
-            nav(role='navigation')
+              span.name   Grain Billd
+            a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') Menu
+            nav(role='navigation' ng-controller='navCtrl')
               ul#js-navigation-menu.navigation-menu.show
                 li.nav-link
                   a(ng-href='#/home') Home
@@ -21,12 +22,12 @@ html(lang='en')
                   a(ng-href='javascript:void(0)') Recipes
                   ul.submenu
                     li
-                      a(ng-href='#/MyRecipes') My Recipes
+                      a(ng-href='#/MyRecipes/{{currentUser.id}}') My Recipes
                     li
                       a(ng-href='#/CommunityRecipes') Community Recipes
                 li.nav-link.logout
-                    a(ng-href='/auth/logout' ng-click='logOut()' ng-if='currentUser') Log Out
-                    a(ng-href='#/login' ng-if='!currentUser') Log In
+                    a(ng-href='/auth/logout' ng-click='logOut()' ng-show='showLogIn') Log Out
+                    a(ng-href='#/login' ng-hide='showLogIn') Log In
                     //-   ul.submenu
                     //-     li
                     //-       a(href='javascript:void(0)') Sub-submenu Item
@@ -40,10 +41,13 @@ html(lang='en')
                     //-     li
                     //-       a(href='javascript:void(0)') An Item
         ui-view
+        //- script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+        //- script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js")
+        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js')
+        //- script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min.js')
         script(src='components/jquery/dist/jquery.min.js')
         script(src='components/angular/angular.js')
         script(src='components/angular-cookies/angular-cookies.js')
-        //- script(src='ajax.googleapis.com/ajax/libs/angularjs/1.4.17/angular-cookies.js')
         script(src='components/angular-ui-router/release/angular-ui-router.js')
         script(src='components/angular-loading-bar/build/loading-bar.js')
         script(src='app/scripts.min.js')

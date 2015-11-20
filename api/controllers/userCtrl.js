@@ -39,18 +39,8 @@ module.exports = {
   } ,
 
   getCurrentUser: function(req, res){
-    return res.status(200).json(req.user);
-  },
-
-  updateRecipes: function(req, res) {
-      User.findById(req.params.user_id, function(err, user) {
-          if(err) return res.status(500).json(err);
-          user.recipes.push(new mongoose.Types.ObjectId(req.params.recipe_id));
-          user.save(function(err, updatedUser) {
-              if(err) return res.status(500).json(err);
-              return res.json(updatedUser);
-          });
-      });
+      if(req.user) return res.status(200).json(req.user);
+      else return res.json('');
   },
 
   update: function(req, res){
@@ -85,6 +75,23 @@ module.exports = {
       if (err) return res.status(500).json(err);
       return res.status(200).send('User ' + req.params.user_id + ' has been deleted');
     });
+  },
+
+  getRecipes: function(req, res) {
+    User.findById(req.params.userId)
+    .populate('recipes')
+    .exec(function(err, recipes) {
+        if(err) return res.status(500).json(err);
+        return res.status(200).json(recipes.recipes);
+    });
+
+  },
+
+  removeRecipe: function(req, res) {
+      User.update({}, { $pull: { recipes: { _id: req.params.recipeId } } }, { multi: true }, function(err, recipes) {
+          if(err) return res.status(500).json(err);
+          return res.status(200).json('Recipe', req.params.recipeId, 'has been deleted.');
+      });
   }
 
 };

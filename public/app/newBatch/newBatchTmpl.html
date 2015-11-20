@@ -16,10 +16,10 @@
     <div ng-show="hopsValues.ibu" class="recipe ibu">IBU: {{ hopsValues.ibu }}</div>
     <div ng-show="grainValues.og" class="recipe og">OG: {{ grainValues.og }}</div>
     <div ng-show="grainValues.fg" class="recipe fg">FG: {{ grainValues.fg }}</div>
-    <input type="submit" value="Save" ng-click="saveRecipeToUser(recipe)" ng-show="hopsValues && recipe && yeastValues && grainValues" class="saveRecipeBtn"/>
     <label for="privateCheckbox">Private?
-      <input type="checkbox" ng-model="recipe.isPrivate" ng-checked="true" id="privateCheckbox" class="privateBtn"/>
+      <input type="checkbox" ng-model="recipe.isPrivate" ng-true-value="true" ng-false-value="false" id="privateCheckbox" class="privateBtn"/>
     </label>
+    <input type="submit" value="Save" ng-click="saveRecipeToUser(recipe, recipe.isPrivate)" ng-show="grainValues.fg && recipe.name" class="saveRecipeBtn"/>
   </div>
   <div class="module ingredientData">
     <input ng-show="showGrain" type="text" ng-model="ingredientFilter" placeholder="Filter grain..."/>

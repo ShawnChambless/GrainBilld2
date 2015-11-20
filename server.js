@@ -44,10 +44,15 @@ app.get('/auth/logout', function(req, res){
 
 app.post(   '/api/users',                       userCtrl.create );
 app.get(    '/api/users/getUser',               userCtrl.getCurrentUser);
+app.get(    '/api/user/recipes/:userId',        userCtrl.getRecipes);
+app.put(    '/api/user/recipes/remove/:recipeId', userCtrl.removeRecipe);
 app.put(    '/api/users/:user_id',              userCtrl.update );
-app.put(    '/api/users/:user_id/:recipe_id',   userCtrl.updateRecipes);
 app.post(   '/api/users/newRecipe',             recipeCtrl.newRecipe);
 app.delete( '/api/users/:user_id',              userCtrl.remove );
+
+//Recipe Endpoints
+
+app.get(    '/api/recipes/community',    recipeCtrl.getAllRecipes);
 
 //Database endpoints
 
@@ -58,10 +63,11 @@ app.delete( '/api/users/:user_id',              userCtrl.remove );
     app.post(   '/api/database/ingredients/hops',       hopsCtrl.addHops);
     app.get(    '/api/database/ingredients/yeast',      yeastCtrl.getYeast);
     app.post(   '/api/database/ingredients/yeast',      yeastCtrl.addYeast);
-
-mongoose.connect('mongodb://localhost:27017/brewabatch', function(err, response) {
-    console.log(err, 'Mongo is also Listening', response);
+mongoose
+    .set('debug', true)
+    .connect('mongodb://localhost:27017/grainbilld', function() {
+    console.log('Mongo is also Listening');
 });
 httpServer.listen(port, function() {
-    console.log('Listening with httpServer on', port);
+    console.log('Listening with httpServer on:', port);
 });

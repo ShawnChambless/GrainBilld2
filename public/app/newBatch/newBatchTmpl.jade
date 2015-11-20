@@ -13,9 +13,9 @@
         .recipe.ibu(ng-show='hopsValues.ibu') IBU: {{ hopsValues.ibu }}
         .recipe.og(ng-show='grainValues.og') OG: {{ grainValues.og }}
         .recipe.fg(ng-show='grainValues.fg') FG: {{ grainValues.fg }}
-        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe)' ng-show!='hopsValues && recipe && yeastValues && grainValues')
         label(for='privateCheckbox') Private?
-            input.privateBtn(type='checkbox' ng-model='recipe.isPrivate' ng-checked='true' id='privateCheckbox')
+            input.privateBtn(type='checkbox' ng-model='recipe.isPrivate' ng-true-value='true' ng-false-value='false' id='privateCheckbox')
+        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe, recipe.isPrivate)' ng-show!='grainValues.fg && recipe.name')
         
     .module.ingredientData
         input(ng-show='showGrain' type='text' ng-model='ingredientFilter' placeholder='Filter grain...')

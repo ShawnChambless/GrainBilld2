@@ -1,6 +1,5 @@
 angular.module('GrainBilld')
-.controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast, $rootScope) {
-        console.log($rootScope.currentUser.id);
+.controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast, $rootScope, $state) {
     $scope.grainInDb        = getGrain;
     $scope.hopsInDb         = getHops;
     $scope.yeastInDb        = getYeast;
@@ -13,6 +12,8 @@ angular.module('GrainBilld')
     $scope.grains           = 'grain';
     $scope.hopss            = 'hops';
     $scope.yeasts           = 'yeast';
+    $scope.recipe           = {};
+    $scope.recipe.isPrivate = true;
 
     $scope.showGrainData = function() {
         $scope.showGrain    = true;
@@ -44,11 +45,16 @@ angular.module('GrainBilld')
         newBatchService.yeastInRecipe.splice(index, 1);
     };
 
-    $scope.saveRecipeToUser = function(recipe) {
-        var user = $rootScope.currentUser.id;
-
-        newBatchService.saveRecipeToUser(recipe, user).then(function(resp) {
-            $scope.grainValues = $scope.hopsValues = $scope.yeastValues = $scope.grainInRecipe = $scope.hopsInRecipe = $scope.yeastInRecipe = $scope.recipe = '';
+    $scope.saveRecipeToUser = function(recipe, isPrivate) {
+        var user = $scope.currentUser.id;
+        newBatchService.saveRecipeToUser(recipe, isPrivate, user).then(function(resp) {
+            $scope.grainValues = $scope.hopsValues = $scope.yeastValues = 0;
+            newBatchService.grainValues = newBatchService.hopsValues = newBatchService.yeastValues = 0;
+            $scope.grainInRecipe = $scope.hopsInRecipe = $scope.yeastInRecipe = [];
+            newBatchService.grainInRecipe = newBatchService.hopsInRecipe = newBatchService.yeastInRecipe = [];
+            $scope.showGrain = $scope.showHops = $scope.showYeast = false;
+            $scope.recipe = '';
+            $state.reload();
         });
     };
 

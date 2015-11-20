@@ -1,8 +1,8 @@
 angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
 .run(function($rootScope, $http, $cookies) {
         $rootScope.currentUser = $cookies.getObject('user');
-        console.log($rootScope.currentUser);
-        if(!$rootScope.currentUser) getCurrentUser();
+        if($rootScope.currentUser ) $rootScope.showLogIn = true;
+        else getCurrentUser();
     function getCurrentUser() {
         return $http({
             method: 'GET',
@@ -11,11 +11,9 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
             if(resp.data) {
                 $cookies.putObject('user', {
                     id: resp.data._id,
-                    email: resp.data.email,
-                    favorites: resp.data.favorites,
-                    firstName: resp.data.firstName,
-                    recipes: resp.data.recipes
+                    firstName: resp.data.firstName
                 });
+                $rootScope.showLogIn = true;
                 $rootScope.currentUser = resp.data;
             }
             else return;
@@ -80,13 +78,36 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
             templateUrl: 'app/ingredientInfo/ingredientInfoTmpl.html'
         })
         .state('myRecipes', {
-            url: '/MyRecipes',
+            url: '/MyRecipes/:userId',
             controller: 'myRecipesController',
-            templateUrl: 'app/myRecipes/myRecipesTmpl.html'
+            templateUrl: 'app/myRecipes/myRecipesTmpl.html',
+            resolve: {
+                checkUserLoggedIn: function($state, $rootScope, myRecipesService) {
+                    if($rootScope.currentUser) {
+                        return myRecipesService.getRecipes($rootScope.currentUser.id).then(function(resp) {
+
+                            return {recipes: resp.data};
+                        }, function(err) {
+                            $state.go('home');
+                        });
+                    }
+                    else return;
+                }
+            }
         })
         .state('communityRecipes', {
             url: '/CommunityRecipes',
             controller: 'communityRecipesController',
-            templateUrl: 'app/CommunityRecipes/communityRecipesTmpl.html'
+            templateUrl: 'app/CommunityRecipes/communityRecipesTmpl.html',
+            resolve: {
+                getCommunityRecipes: function($state, communityRecipesService) {
+                    return communityRecipesService.getCommunityRecipes().then(function(resp) {
+                        console.log(resp.data);
+                        return {recipes: resp.data};
+                    }, function(err) {
+                        $state.go('home');
+                    });
+                }
+            }
         });
 });
