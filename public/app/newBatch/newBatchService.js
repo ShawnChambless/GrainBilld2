@@ -127,8 +127,8 @@ angular.module('GrainBilld')
             method: 'POST',
             url: 'api/users/newRecipe',
             data: {
-                user: user,
                 recipe: {
+                    user: user,
                     name: recipe.name,
                     grain: this.grainInRecipe,
                     hops: this.hopsInRecipe,

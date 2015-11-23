@@ -10,7 +10,7 @@ module.exports = {
             if(err) return res.status(500).json(err);
             recipeId = newRecipe._id;
         });
-        User.findById(req.body.user, function(err, user) {
+        User.findById(req.body.recipe.user, function(err, user) {
             user.recipes.push(recipeId);
             user.save(function(err) {
                 return res.status(200).json('Recipe saved!');
@@ -24,6 +24,14 @@ module.exports = {
         .exec(function(err, recipes) {
             if(err) return res.status(500).json(err);
             return res.status(200).json(recipes);
+        });
+    },
+
+    removeRecipe: function(req, res) {
+        User.update({}, { $pull: { recipes: req.params.recipeId } }, { multi: true });
+        Recipe.update({}, { $pull: { _id: req.params.recipeId } }, { multi: true }, function(err, resp) {
+            if(err) return console.log(res.status(500).json(err));
+            return res.status(200).json(resp);
         });
     }
 };

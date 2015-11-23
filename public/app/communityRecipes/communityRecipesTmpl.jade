@@ -2,9 +2,8 @@
     .container.my-recipes
         .col-3(ng-repeat='recipe in recipes track by $index')
             .recipeWrapper
-                span(ng-click='removeRecipe(recipe._id, $index)' ng-show='recipe.user == currentUser.id') Remove
                 header 
-                    span.fa.fa-trash-o.recipeTrash(ng-click='removeRecipe(recipe._id, $index)' ng-if='recipe.user._id == currentUser.id')
+                    span.fa.fa-trash-o.recipeTrash(ng-click='removeRecipe(recipe._id, $index)' ng-if='recipe.user == currentUser.id')
                     h3 {{recipe.name}}
                 h4 Private: {{ recipe.isPrivate }}
                 .stats

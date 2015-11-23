@@ -2,8 +2,8 @@
 <div class="my-recipes-wrapper">
   <div class="container my-recipes">
     <div ng-repeat="recipe in recipes track by $index" class="col-3">
-      <div class="recipeWrapper"><span ng-click="removeRecipe(recipe._id, $index)" ng-show="recipe.user == currentUser.id">Remove</span>
-        <header> <span ng-click="removeRecipe(recipe._id, $index)" ng-if="recipe.user._id == currentUser.id" class="fa fa-trash-o recipeTrash"></span>
+      <div class="recipeWrapper">
+        <header> <span ng-click="removeRecipe(recipe._id, $index)" ng-if="recipe.user == currentUser.id" class="fa fa-trash-o recipeTrash"></span>
           <h3>{{recipe.name}}</h3>
         </header>
         <h4>Private: {{ recipe.isPrivate }}</h4>

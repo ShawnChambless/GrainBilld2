@@ -85,13 +85,6 @@ module.exports = {
         return res.status(200).json(recipes.recipes);
     });
 
-  },
-
-  removeRecipe: function(req, res) {
-      User.update({}, { $pull: { recipes: { _id: req.params.recipeId } } }, { multi: true }, function(err, recipes) {
-          if(err) return res.status(500).json(err);
-          return res.status(200).json('Recipe', req.params.recipeId, 'has been deleted.');
-      });
   }
-
+  
 };

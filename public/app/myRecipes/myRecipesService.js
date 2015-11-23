@@ -8,10 +8,10 @@ angular.module('GrainBilld')
         });
     };
 
-    this.removeRecipe = function(recipeId) {
+    this.removeRecipe = function(recipeId, userId) {
         return $http({
             method: 'PUT',
-            url: '/api/user/recipes/remove/' + recipeId
+            url: '/api/user/recipes/remove/' + recipeId + '/' + userId
         }).then(function(resp) {
             return resp.data;
         });
