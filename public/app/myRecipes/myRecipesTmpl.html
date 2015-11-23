@@ -2,9 +2,9 @@
 <div class="my-recipes-wrapper">
   <div class="container my-recipes">
     <div ng-repeat="recipe in recipes track by $index" class="col-3">
-      <div class="recipeWrapper"><span ng-click="removeRecipe(recipe._id, $index)">Remove</span>
+      <div class="recipeWrapper">
         <header> 
-          <h3>{{recipe.name}} </h3>
+          <h3 class="recipeName">{{recipe.name}} </h3><span ng-click="removeRecipe(recipe._id, $index)" class="fa fa-trash-o recipeTrash"></span>
         </header>
         <h4>Private: {{ recipe.isPrivate }}</h4>
         <div class="stats">

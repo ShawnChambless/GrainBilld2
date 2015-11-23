@@ -4,7 +4,8 @@
             .recipeWrapper
                 span(ng-click='removeRecipe(recipe._id, $index)' ng-show='recipe.user == currentUser.id') Remove
                 header 
-                    h3 {{recipe.name}} 
+                    span.fa.fa-trash-o.recipeTrash(ng-click='removeRecipe(recipe._id, $index)' ng-if='recipe.user._id == currentUser.id')
+                    h3 {{recipe.name}}
                 h4 Private: {{ recipe.isPrivate }}
                 .stats
                     div(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}

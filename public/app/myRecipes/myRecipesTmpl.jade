@@ -2,9 +2,9 @@
     .container.my-recipes
         .col-3(ng-repeat='recipe in recipes track by $index')
             .recipeWrapper
-                span(ng-click='removeRecipe(recipe._id, $index)') Remove
                 header 
-                    h3 {{recipe.name}} 
+                    h3.recipeName {{recipe.name}} 
+                    span.fa.fa-trash-o.recipeTrash(ng-click='removeRecipe(recipe._id, $index)')
                 h4 Private: {{ recipe.isPrivate }}
                 .stats
                     div(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}
