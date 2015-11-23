@@ -15,7 +15,7 @@
         .recipe.fg(ng-show='grainValues.fg') FG: {{ grainValues.fg }}
         label(for='privateCheckbox') Private?
             input.privateBtn(type='checkbox' ng-model='recipe.isPrivate' ng-true-value='true' ng-false-value='false' id='privateCheckbox')
-        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe, recipe.isPrivate)' ng-show!='grainValues.fg && recipe.name')
+        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe, recipe.isPrivate)' ng-show!='grainValues.fg && recipe.name && currentUser')
         
     .module.ingredientData
         input(ng-show='showGrain' type='text' ng-model='ingredientFilter' placeholder='Filter grain...')
@@ -30,8 +30,11 @@
     .module.recipeData
         .recipe.ingredients
             .ingredient.grain(ng-repeat='grain in grainInRecipe') {{grain.name}}
-                span.remove(ng-click='removeGrain($index)') Remove
+                span.remove(ng-click='removeGrain($index)') 
+                    i(class="fa fa-trash-o")
             .ingredient.hops(ng-repeat='hops in hopsInRecipe') {{hops.name}}
-                span.remove(ng-click='removeHops($index)') Remove
+                span.remove(ng-click='removeHops($index)') 
+                    i(class="fa fa-trash-o")
             .ingredient.yeast(ng-repeat='yeast in yeastInRecipe') {{yeast.name}}
-                span.remove(ng-click='removeYeast($index)') Remove
+                span.remove(ng-click='removeYeast($index)') 
+                    i(class="fa fa-trash-o")

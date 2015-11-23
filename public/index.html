@@ -6,7 +6,7 @@
   </head>
   <body ng-app="GrainBilld">
     <header role="banner" class="navigation">
-      <div class="navigation-wrapper"><a ui-sref="home" class="logo"><span class="octicon octicon-beer"></span><span class="name">  Grain Billd</span></a><a id="js-mobile-menu" href="javascript:void(0)" class="navigation-menu-button">Menu</a>
+      <div class="navigation-wrapper"><a ui-sref="home" class="logo"><span class="octicon octicon-beer"></span><span class="fa fa-beer"></span><span class="name">  Grain Billd</span></a><a id="js-mobile-menu" href="javascript:void(0)" class="navigation-menu-button">Menu</a>
         <nav role="navigation" ng-controller="navCtrl">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"><a ng-href="#/home">Home</a></li>
@@ -14,7 +14,7 @@
             <li class="nav-link"><a ng-href="#/IngredientInfo">Ingredient Info</a></li>
             <li class="nav-link more"><a ng-href="javascript:void(0)">Recipes</a>
               <ul class="submenu">
-                <li><a ng-href="#/MyRecipes/{{currentUser.id}}">My Recipes</a></li>
+                <li ng-if="currentUser"><a ng-href="#/MyRecipes/{{currentUser.id}}">My Recipes</a></li>
                 <li><a ng-href="#/CommunityRecipes">Community Recipes</a></li>
               </ul>
             </li>
