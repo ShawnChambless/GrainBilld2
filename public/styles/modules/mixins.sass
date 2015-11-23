@@ -13,3 +13,10 @@
 
 @mixin fastTransition ($property)
     transition: $property 110ms ease-in-out
+
+@mixin trashCan ()
+    cursor: pointer
+    &:hover
+        color: lighten(red, 10%)
+        font-size: 1.4em
+        margin-right: -2px

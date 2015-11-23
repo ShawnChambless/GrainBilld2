@@ -9,6 +9,8 @@
         display: flex
         justify-content: space-around
         flex-wrap: wrap
+.recipeWrapper
+    position: relative
 .col-3
     padding: 1em
     background: $blue
@@ -25,3 +27,11 @@ header
     text-transform: capitalize
     font-size: 1.3em
     font-weight: 500
+.recipeName
+    display: inline
+.recipeTrash
+    position: absolute
+    top: -25px
+    left: -20px
+    +fastTransition(all)
+    +trashCan()

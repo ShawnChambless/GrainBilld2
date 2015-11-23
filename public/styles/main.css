@@ -611,10 +611,10 @@ header.navigation {
     .newBatchWrapper .module.recipeData i {
       color: #3090C7;
       font-size: 1.2em;
-      cursor: pointer;
       float: right;
       -webkit-transition: all 110ms ease-in-out;
-              transition: all 110ms ease-in-out; }
+              transition: all 110ms ease-in-out;
+      cursor: pointer; }
       .newBatchWrapper .module.recipeData i:hover {
         color: #ff3333;
         font-size: 1.4em;
@@ -640,6 +640,9 @@ header.navigation {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap; }
 
+.recipeWrapper {
+  position: relative; }
+
 .col-3 {
   padding: 1em;
   background: #3090C7;
@@ -655,3 +658,18 @@ header {
   text-transform: capitalize;
   font-size: 1.3em;
   font-weight: 500; }
+
+.recipeName {
+  display: inline; }
+
+.recipeTrash {
+  position: absolute;
+  top: -25px;
+  left: -20px;
+  -webkit-transition: all 110ms ease-in-out;
+          transition: all 110ms ease-in-out;
+  cursor: pointer; }
+  .recipeTrash:hover {
+    color: #ff3333;
+    font-size: 1.4em;
+    margin-right: -2px; }

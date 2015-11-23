@@ -35,10 +35,6 @@
             i
                 color: $blue
                 font-size: 1.2em
-                cursor: pointer
                 float: right
                 +fastTransition(all)
-                &:hover
-                    color: lighten(red, 10%)
-                    font-size: 1.4em
-                    margin-right: -2px
+                +trashCan()
