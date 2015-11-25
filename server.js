@@ -44,14 +44,15 @@ app.get('/auth/logout', function(req, res){
 app.post(   '/api/users',                       userCtrl.create );
 app.get(    '/api/users/getUser',               userCtrl.getCurrentUser);
 app.get(    '/api/user/recipes/:userId',        userCtrl.getRecipes);
-app.put(    '/api/user/recipes/remove/:recipeId/:userId', recipeCtrl.removeRecipe);
+app.put(    '/api/user/recipes/remove', recipeCtrl.removeRecipe);
 app.put(    '/api/users/:user_id',              userCtrl.update );
 app.post(   '/api/users/newRecipe',             recipeCtrl.newRecipe);
 app.delete( '/api/users/:user_id',              userCtrl.remove );
 
 //Recipe Endpoints
 
-app.get(    '/api/recipes/community',    recipeCtrl.getAllRecipes);
+app.get(    '/api/recipes/community',    recipeCtrl.getCommunityRecipes);
+app.get(    '/api/recipes',              recipeCtrl.getRecipeTotals);
 
 //Database endpoints
 

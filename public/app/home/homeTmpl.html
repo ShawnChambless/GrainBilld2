@@ -1,4 +1,16 @@
 
 <div class="container">
   <h1>Welcome to Grain Billd 2!</h1>
+  <div class="data">
+    <div>{{ totalCount }} total Recipes!</div>
+    <div>{{ totalCommunity }} <a ng-href="#/CommunityRecipes">community {{ recipe }}!</a></div>
+  </div>
+  <aside class="right">
+    <header> 
+      <p>Latest community recipes</p>
+    </header>
+    <div ng-repeat="recipe in communityRecipes">
+      <p>{{ recipe.name }}</p><span>{{ recipe.desc }}</span>
+    </div>
+  </aside>
 </div>

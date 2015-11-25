@@ -11,7 +11,11 @@ angular.module('GrainBilld')
     this.removeRecipe = function(recipeId, userId) {
         return $http({
             method: 'PUT',
-            url: '/api/user/recipes/remove/' + recipeId + '/' + userId
+            url: '/api/user/recipes/remove',
+            data: {
+                recipeId: recipeId,
+                userId: userId
+            }
         }).then(function(resp) {
             return resp.data;
         });
