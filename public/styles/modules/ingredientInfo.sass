@@ -1,0 +1,20 @@
+.ingredientInfo
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    height: 100%
+    .grainInfo, .hopsInfo, .yeastInfo
+        height: 100%
+        width: calc(100%/3.2)
+        .info
+            overflow: scroll
+            height: 75%
+            p:first-of-type
+                margin-top: 10px
+    header
+        margin-top: 15px
+        width: 100%
+        input[type='text'], h3
+            display: inline
+        input[type='text']
+            width: 60%

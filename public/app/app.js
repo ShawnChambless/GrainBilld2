@@ -70,8 +70,25 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
         })
         .state('ingredientInfo', {
             url: '/IngredientInfo',
+            templateUrl: 'app/ingredientInfo/ingredientInfoTmpl.html',
             controller: 'ingredientInfoController',
-            templateUrl: 'app/ingredientInfo/ingredientInfoTmpl.html'
+            resolve: {
+                getIngredients: function(homeService) {
+                    var ingredients = {};
+                    return (
+                        homeService.getGrain().then(function(resp) {
+                            ingredients.grain = resp.data;
+                        }),
+                        homeService.getHops().then(function(resp) {
+                            ingredients.hops = resp.data;
+                        }),
+                        homeService.getYeast().then(function(resp) {
+                            ingredients.yeast = resp.data;
+                            return ingredients;
+                        })
+                    );
+                }
+            }
         })
         .state('myRecipes', {
             url: '/MyRecipes/:userId',

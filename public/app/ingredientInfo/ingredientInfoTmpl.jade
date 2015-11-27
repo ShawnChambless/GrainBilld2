@@ -1,0 +1,25 @@
+.container.ingredientInfo
+    .grainInfo
+        header
+            h3 Grain
+            input(type='text' placeholder='Filter' ng-model='grainFilter')
+        .info
+            p(ng-repeat='grain in grain | filter: grainFilter') 
+                strong {{ grain.name }} 
+                {{ grain.description }}
+    .hopsInfo
+        header
+            h3 Hops
+            input(type='text' placeholder='Filter' ng-model='hopsFilter')
+        .info
+            p(ng-repeat='hops in hops | filter: hopsFilter')
+                strong {{ hops.name }} 
+                {{ hops.description }}
+    .yeastInfo
+        header
+            h3 Yeast
+            input(type='text' placeholder='Filter' ng-model='yeastFilter')
+        .info
+            p(ng-repeat='yeast in yeast | filter: yeastFilter')
+                strong {{ yeast.name }}
+                {{ yeast.description }}

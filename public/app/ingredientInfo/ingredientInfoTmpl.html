@@ -1,0 +1,30 @@
+
+<div class="container ingredientInfo">
+  <div class="grainInfo">
+    <header>
+      <h3>Grain</h3>
+      <input type="text" placeholder="Filter" ng-model="grainFilter"/>
+    </header>
+    <div class="info">
+      <p ng-repeat="grain in grain | filter: grainFilter"> <strong>{{ grain.name }} </strong>{{ grain.description }}</p>
+    </div>
+  </div>
+  <div class="hopsInfo">
+    <header>
+      <h3>Hops</h3>
+      <input type="text" placeholder="Filter" ng-model="hopsFilter"/>
+    </header>
+    <div class="info">
+      <p ng-repeat="hops in hops | filter: hopsFilter"><strong>{{ hops.name }} </strong>{{ hops.description }}</p>
+    </div>
+  </div>
+  <div class="yeastInfo">
+    <header>
+      <h3>Yeast</h3>
+      <input type="text" placeholder="Filter" ng-model="yeastFilter"/>
+    </header>
+    <div class="info">
+      <p ng-repeat="yeast in yeast | filter: yeastFilter"><strong>{{ yeast.name }}</strong>{{ yeast.description }}</p>
+    </div>
+  </div>
+</div>

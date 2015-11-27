@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lobster+Two:400italic,700italic);
 @import url(../components/font-awesome/css/font-awesome.min.css);
 @import url(../components/angular-loading-bar/build/loading-bar.css);
 @import url(../assets/octicons/octicons.css);
@@ -681,3 +682,32 @@ header {
     color: #ff3333;
     font-size: 1.4em;
     margin-right: -2px; }
+
+.ingredientInfo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  height: 100%; }
+  .ingredientInfo .grainInfo, .ingredientInfo .hopsInfo, .ingredientInfo .yeastInfo {
+    height: 100%;
+    width: calc(100%/3.2); }
+    .ingredientInfo .grainInfo .info, .ingredientInfo .hopsInfo .info, .ingredientInfo .yeastInfo .info {
+      overflow: scroll;
+      height: 75%; }
+      .ingredientInfo .grainInfo .info p:first-of-type, .ingredientInfo .hopsInfo .info p:first-of-type, .ingredientInfo .yeastInfo .info p:first-of-type {
+        margin-top: 10px; }
+  .ingredientInfo header {
+    margin-top: 15px;
+    width: 100%; }
+    .ingredientInfo header input[type='text'], .ingredientInfo header h3 {
+      display: inline; }
+    .ingredientInfo header input[type='text'] {
+      width: 60%; }
