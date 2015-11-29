@@ -29,10 +29,9 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.post('/auth/local/signup', passport.authenticate( 'local-signup' ), function(req, res){
       res.json(req.user);
-    });
+});
 app.post('/auth/local/login', passport.authenticate( 'local-login' ), function(req, res){
     res.json(req.user);
 });
@@ -45,20 +44,21 @@ app.get('/auth/logout', function(req, res){
 app.post(   '/api/users',                       userCtrl.create );
 app.get(    '/api/users/getUser',               userCtrl.getCurrentUser);
 app.get(    '/api/user/recipes/:userId',        userCtrl.getRecipes);
-app.put(    '/api/user/recipes/remove/:recipeId', userCtrl.removeRecipe);
+app.put(    '/api/user/recipes/remove', recipeCtrl.removeRecipe);
 app.put(    '/api/users/:user_id',              userCtrl.update );
 app.post(   '/api/users/newRecipe',             recipeCtrl.newRecipe);
 app.delete( '/api/users/:user_id',              userCtrl.remove );
 
 //Recipe Endpoints
 
-app.get(    '/api/recipes/community',    recipeCtrl.getAllRecipes);
+app.get(    '/api/recipes/community',    recipeCtrl.getCommunityRecipes);
+app.get(    '/api/recipes',              recipeCtrl.getRecipeTotals);
 
 //Database endpoints
 
     app.get(    '/api/database/ingredients/grain',      grainCtrl.getGrain);
     app.post(   '/api/database/ingredients/grain',      grainCtrl.addGrain);
-    app.put(    '/api/database/ingredients/grain/:_id', grainCtrl.updateGrain);
+    app.put(    '/api/database/ingredients/grain/:_id/', grainCtrl.updateGrain);
     app.get(    '/api/database/ingredients/hops',       hopsCtrl.getHops);
     app.post(   '/api/database/ingredients/hops',       hopsCtrl.addHops);
     app.get(    '/api/database/ingredients/yeast',      yeastCtrl.getYeast);

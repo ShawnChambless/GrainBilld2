@@ -1,0 +1,28 @@
+.container.ingredientInfo
+    .grainInfo
+        header
+            h3 Grain
+            input(type='text' placeholder='Filter' ng-model='grainFilter')
+        .info
+            p(ng-repeat='grain in grain | filter: grainFilter' ng-click='rotate90("grain", $index); showGrainInfo = !showGrainInfo') 
+                span(class='octicon octicon-triangle-right'  id='grain{{$index}}')
+                strong {{ grain.name }}
+                span(ng-if='showGrainInfo')  {{ grain.description }}
+    .hopsInfo
+        header
+            h3 Hops
+            input(type='text' placeholder='Filter' ng-model='hopsFilter')
+        .info
+            p(ng-repeat='hops in hops | filter: hopsFilter' ng-click='rotate90("hops", $index); showHopsInfo = !showHopsInfo')
+                span(class='octicon octicon-triangle-right'  id='hops{{$index}}')
+                strong {{ hops.name }} 
+                span(ng-if='showHopsInfo')  {{ hops.description }}
+    .yeastInfo
+        header
+            h3 Yeast
+            input(type='text' placeholder='Filter' ng-model='yeastFilter')
+        .info
+            p(ng-repeat='yeast in yeast | filter: yeastFilter' ng-click='rotate90("yeast", $index); showYeastInfo = !showYeastInfo')
+                span(class='octicon octicon-triangle-right'  id='yeast{{$index}}')
+                strong {{ yeast.name }}
+                span(ng-if='showYeastInfo')  {{ yeast.description }}

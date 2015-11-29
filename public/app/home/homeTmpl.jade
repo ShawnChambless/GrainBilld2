@@ -1,2 +1,15 @@
 .container
     h1 Welcome to Grain Billd 2!
+
+
+    .data
+        div {{ totalCount }} total Recipes!
+        div {{ totalCommunity }} 
+            a(ng-href='#/CommunityRecipes') community {{ recipe }}!
+        
+    aside.right
+        header 
+            p Latest community recipes
+        div(ng-repeat='recipe in communityRecipes')
+            p {{ recipe.name }}
+            span {{ recipe.desc }}

@@ -33,19 +33,15 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
             controller: 'homeCtrl',
             templateUrl: 'app/home/homeTmpl.html',
             resolve: {
-                getGrain: function(homeService) {
-                    return homeService.getGrain().then(function(resp) {
-                        return {grain: resp.data};
+                getRecipeTotals: function(homeService) {
+                    return homeService.getRecipeTotals().then(function(resp) {
+                        console.log(resp);
+                        return resp.data;
                     });
                 },
-                getHops: function(homeService) {
-                    return homeService.getHops().then(function(resp) {
-                        return {hops: resp.data};
-                    });
-                },
-                getYeast: function(homeService) {
-                    return homeService.getYeast().then(function(resp) {
-                        return {yeast: resp.data};
+                getCommunityRecipes: function(communityRecipesService) {
+                    return communityRecipesService.getCommunityRecipes().then(function(resp) {
+                        return resp.data;
                     });
                 }
             }
@@ -74,8 +70,25 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
         })
         .state('ingredientInfo', {
             url: '/IngredientInfo',
+            templateUrl: 'app/ingredientInfo/ingredientInfoTmpl.html',
             controller: 'ingredientInfoController',
-            templateUrl: 'app/ingredientInfo/ingredientInfoTmpl.html'
+            resolve: {
+                getIngredients: function(homeService) {
+                    var ingredients = {};
+                    return (
+                        homeService.getGrain().then(function(resp) {
+                            ingredients.grain = resp.data;
+                        }),
+                        homeService.getHops().then(function(resp) {
+                            ingredients.hops = resp.data;
+                        }),
+                        homeService.getYeast().then(function(resp) {
+                            ingredients.yeast = resp.data;
+                            return ingredients;
+                        })
+                    );
+                }
+            }
         })
         .state('myRecipes', {
             url: '/MyRecipes/:userId',

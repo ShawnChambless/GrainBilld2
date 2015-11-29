@@ -11,10 +11,8 @@ angular.module('GrainBilld')
             $rootScope.showLogIn = true;
             $scope.showSuccess = true;
             $scope.showError = false;
-            $state.go('home');
         }, function(err) {
             $scope.showError = true;
-            $state.go('login');
         });
     };
     $scope.login = function(email, password) {
@@ -28,19 +26,8 @@ angular.module('GrainBilld')
             $rootScope.showLogIn = true;
             $scope.showSuccess = true;
             $scope.showError = false;
-            $state.go('home');
         }, function(err) {
             $scope.showError = true;
-            $state.go('login');
         });
     };
-
-    // $scope.getCurrentUser = function(userId) {
-    //     loginService.getCurrentUser().then(function(resp) {
-    //         if(currUser === user);
-    //         $state.go('home');
-    //     }).catch(function(err) {
-    //         console.log(err);
-    //     });
-    // };
 });

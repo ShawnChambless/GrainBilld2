@@ -36,6 +36,7 @@ angular.module('GrainBilld')
         arr.push({
             name: hops.name,
             alphaAcid: (hops.alphaAcid / 100),
+            amount: 1,
             boilTime: 10,
             description: hops.description
         });
@@ -127,8 +128,8 @@ angular.module('GrainBilld')
             method: 'POST',
             url: 'api/users/newRecipe',
             data: {
-                user: user,
                 recipe: {
+                    user: user,
                     name: recipe.name,
                     grain: this.grainInRecipe,
                     hops: this.hopsInRecipe,

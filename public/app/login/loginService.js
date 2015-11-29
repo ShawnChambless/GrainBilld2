@@ -1,17 +1,5 @@
 angular.module('GrainBilld')
-.service('loginService', function($http) {
-
-    // this.getCurrentUser = function() {
-    //     return $http({
-    //         method: 'GET',
-    //         url:    'http://localhost:8080/api/user/'
-    //     }).then(function(resp) {
-    //         return resp.data;
-    //     }, function(err) {
-    //         return err;
-    //     });
-    // };
-
+.service('loginService', function($http, $state) {
     this.register = function(firstName, lastName, email, password) {
         return $http({
             method: 'POST',
@@ -23,6 +11,7 @@ angular.module('GrainBilld')
                 password:   password
             }
         }).then(function(resp) {
+            if(resp.status == 200) $state.go('home');
             return resp.data;
         }, function(err) {
             return err;
@@ -38,6 +27,7 @@ angular.module('GrainBilld')
                 password:   password
             }
         }).then(function(resp) {
+            if(resp.status == 200) $state.go('home');
             return resp.data;
         }, function(err) {
             return err;

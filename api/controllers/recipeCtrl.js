@@ -10,7 +10,7 @@ module.exports = {
             if(err) return res.status(500).json(err);
             recipeId = newRecipe._id;
         });
-        User.findById(req.body.user, function(err, user) {
+        User.findById(req.body.recipe.user, function(err, user) {
             user.recipes.push(recipeId);
             user.save(function(err) {
                 return res.status(200).json('Recipe saved!');
@@ -18,12 +18,35 @@ module.exports = {
         });
     },
 
-    getAllRecipes: function(req, res) {
+    getCommunityRecipes: function(req, res) {
         Recipe.find({})
         .where('isPrivate').equals(false)
         .exec(function(err, recipes) {
             if(err) return res.status(500).json(err);
             return res.status(200).json(recipes);
+        });
+    },
+
+    getRecipeTotals: function(req, res) {
+        Recipe.find({})
+        .exec(function(err, resp) {
+            if(err) return res.status(500).json(err);
+            var totalCommunity = 0;
+            resp.forEach(function(item) {
+                if(!item.isPrivate) totalCommunity++;
+            });
+            return res.status(200).json({totalCount: resp.length, totalCommunity: totalCommunity});
+        });
+    },
+
+    removeRecipe: function(req, res, next) {
+        Recipe.findByIdAndRemove(req.body.recipeId, function(err, resp) {
+            if(err) return res.status(500).json(err);
+            console.log(resp);
+            User.findByIdAndUpdate(resp.user, { $pull: { recipes: req.body.recipeId } }, {new: true}, function(err, resp) {
+                if(err) return res.status(500).json(err);
+                return res.status(200).json(resp);
+            });
         });
     }
 };

@@ -21,4 +21,8 @@ angular.module('GrainBilld')
         });
     };
 
+    this.getRecipeTotals = function() {
+        return $http.get('/api/recipes');
+    };
+
 });
