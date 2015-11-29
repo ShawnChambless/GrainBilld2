@@ -5,4 +5,8 @@ angular.module('GrainBilld')
     $scope.hops = getIngredients.hops;
     $scope.yeast = getIngredients.yeast;
 
+    $scope.rotate90 = function(ingredient, id) {
+        document.getElementById(ingredient + id).classList.toggle('rotated90');
+    };
+
 });

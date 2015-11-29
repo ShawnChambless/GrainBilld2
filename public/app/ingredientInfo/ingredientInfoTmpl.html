@@ -6,7 +6,7 @@
       <input type="text" placeholder="Filter" ng-model="grainFilter"/>
     </header>
     <div class="info">
-      <p ng-repeat="grain in grain | filter: grainFilter"> <strong>{{ grain.name }} </strong>{{ grain.description }}</p>
+      <p ng-repeat="grain in grain | filter: grainFilter" ng-click="rotate90(&quot;grain&quot;, $index); showGrainInfo = !showGrainInfo"> <span id="grain{{$index}}" class="octicon octicon-triangle-right"></span><strong>{{ grain.name }}</strong><span ng-if="showGrainInfo"> {{ grain.description }}</span></p>
     </div>
   </div>
   <div class="hopsInfo">
@@ -15,7 +15,7 @@
       <input type="text" placeholder="Filter" ng-model="hopsFilter"/>
     </header>
     <div class="info">
-      <p ng-repeat="hops in hops | filter: hopsFilter"><strong>{{ hops.name }} </strong>{{ hops.description }}</p>
+      <p ng-repeat="hops in hops | filter: hopsFilter" ng-click="rotate90(&quot;hops&quot;, $index); showHopsInfo = !showHopsInfo"><span id="hops{{$index}}" class="octicon octicon-triangle-right"></span><strong>{{ hops.name }} </strong><span ng-if="showHopsInfo"> {{ hops.description }}</span></p>
     </div>
   </div>
   <div class="yeastInfo">
@@ -24,7 +24,7 @@
       <input type="text" placeholder="Filter" ng-model="yeastFilter"/>
     </header>
     <div class="info">
-      <p ng-repeat="yeast in yeast | filter: yeastFilter"><strong>{{ yeast.name }}</strong>{{ yeast.description }}</p>
+      <p ng-repeat="yeast in yeast | filter: yeastFilter" ng-click="rotate90(&quot;yeast&quot;, $index); showYeastInfo = !showYeastInfo"><span id="yeast{{$index}}" class="octicon octicon-triangle-right"></span><strong>{{ yeast.name }}</strong><span ng-if="showYeastInfo"> {{ yeast.description }}</span></p>
     </div>
   </div>
 </div>

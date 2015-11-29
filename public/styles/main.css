@@ -223,6 +223,10 @@ input[type='number'], input[type='text'], input[type='password'] {
   font-weight: 700;
   text-transform: capitalize; }
 
+.rotated90 {
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg); }
+
 .data {
   font-size: 1.2em; }
 
@@ -702,12 +706,26 @@ header {
     .ingredientInfo .grainInfo .info, .ingredientInfo .hopsInfo .info, .ingredientInfo .yeastInfo .info {
       overflow: scroll;
       height: 75%; }
-      .ingredientInfo .grainInfo .info p:first-of-type, .ingredientInfo .hopsInfo .info p:first-of-type, .ingredientInfo .yeastInfo .info p:first-of-type {
-        margin-top: 10px; }
+      .ingredientInfo .grainInfo .info p, .ingredientInfo .hopsInfo .info p, .ingredientInfo .yeastInfo .info p {
+        cursor: pointer;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none; }
+        .ingredientInfo .grainInfo .info p:first-of-type, .ingredientInfo .hopsInfo .info p:first-of-type, .ingredientInfo .yeastInfo .info p:first-of-type {
+          margin-top: 10px; }
+      .ingredientInfo .grainInfo .info .octicon, .ingredientInfo .hopsInfo .info .octicon, .ingredientInfo .yeastInfo .info .octicon {
+        float: left;
+        margin: 4px 5px 0 0;
+        color: #3090C7;
+        width: 11px;
+        -webkit-transition: all 110ms ease-in-out;
+                transition: all 110ms ease-in-out; }
   .ingredientInfo header {
     margin-top: 15px;
     width: 100%; }
     .ingredientInfo header input[type='text'], .ingredientInfo header h3 {
       display: inline; }
     .ingredientInfo header input[type='text'] {
-      width: 60%; }
+      width: 60%;
+      height: 35px; }

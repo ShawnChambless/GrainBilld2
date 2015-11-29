@@ -36,6 +36,7 @@ angular.module('GrainBilld')
         arr.push({
             name: hops.name,
             alphaAcid: (hops.alphaAcid / 100),
+            amount: 1,
             boilTime: 10,
             description: hops.description
         });

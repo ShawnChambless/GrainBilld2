@@ -9,8 +9,17 @@
         .info
             overflow: scroll
             height: 75%
-            p:first-of-type
-                margin-top: 10px
+            p
+                cursor: pointer
+                user-select: none
+                &:first-of-type
+                    margin-top: 10px
+            .octicon
+                float: left
+                margin: 4px 5px 0 0
+                color: $blue
+                width: 11px
+                +fastTransition(all)
     header
         margin-top: 15px
         width: 100%
@@ -18,3 +27,4 @@
             display: inline
         input[type='text']
             width: 60%
+            height: 35px

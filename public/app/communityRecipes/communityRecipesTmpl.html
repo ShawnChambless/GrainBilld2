@@ -6,10 +6,10 @@
         <header> <span ng-click="removeRecipe(recipe._id, $index)" ng-if="recipe.user == currentUser.id" class="fa fa-trash-o recipeTrash"></span>
           <h3>{{recipe.name}}</h3>
         </header>
-        <h4>Private: {{ recipe.isPrivate }}</h4>
         <div class="stats">
           <div ng-repeat="grain in recipe.grain">{{grain.amount}}lbs {{grain.name}}</div>
           <div ng-repeat="hops in recipe.hops">{{hops.amount}}oz {{hops.boilTime}}mins {{hops.name}}</div>
+          <div ng-repeat="yeast in recipe.yeast">{{yeast.name}}</div>
         </div>
       </div>
     </div>
