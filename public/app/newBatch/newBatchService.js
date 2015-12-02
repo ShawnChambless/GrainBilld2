@@ -1,11 +1,11 @@
 angular.module('GrainBilld')
 .service('newBatchService', function($http) {
     this.grainInRecipe = [];
-    this.hopsInRecipe = [];
+    this.hopsInRecipe  = [];
     this.yeastInRecipe = [];
-    this.grainValues = { og: 0, fg: 0, srm: 0 };
-    this.hopsValues = { ibu: 0 };
-    this.yeastValues = { attenuation: 0, abv: 0 };
+    this.grainValues   = { og: 0, fg: 0, srm: 0 };
+    this.hopsValues    = { ibu: 0 };
+    this.yeastValues   = { attenuation: 0, abv: 0 };
 
     this.addIngredient = function(ingredientType, ingredient) {
         switch(ingredientType) {
@@ -108,22 +108,20 @@ angular.module('GrainBilld')
         return abv;
     }
 
-
     function findHopUtilization (boilTime){
         var hopUtilization = 0;
         if(boilTime === 0) hopUtilization = 0;
-        else if (boilTime > 0 && boilTime <= 9) hopUtilization = 0.05;
-        else if (boilTime > 9 && boilTime <= 19) hopUtilization = 0.12;
+        else if (boilTime > 0  && boilTime <= 9)  hopUtilization = 0.05;
+        else if (boilTime > 9  && boilTime <= 19) hopUtilization = 0.12;
         else if (boilTime > 19 && boilTime <= 29) hopUtilization = 0.15;
         else if (boilTime > 29 && boilTime <= 44) hopUtilization = 0.19;
         else if (boilTime > 44 && boilTime <= 59) hopUtilization = 0.22;
         else if (boilTime > 59 && boilTime <= 74) hopUtilization = 0.24;
         else if (boilTime > 74) hopUtilization = 0.27;
-
         return hopUtilization;
     }
 
-    this.saveRecipeToUser = function(recipe, isPrivate, user) {
+    this.saveRecipeToUser = function(recipe, user) {
         return $http({
             method: 'POST',
             url: 'api/users/newRecipe',
@@ -136,11 +134,19 @@ angular.module('GrainBilld')
                     yeast: this.yeastInRecipe,
                     batchSize: recipe.batchSize,
                     projectedEfficiency: recipe.efficiency,
-                    isPrivate: isPrivate
+                    isPrivate: recipe.isPrivate
                 }
             }
         }).then(function(resp) {
-            return resp;
-        });
+            return (
+                this.grainInRecipe = [],
+                this.hopsInRecipe  = [],
+                this.yeastInRecipe = [],
+                this.grainValues   = { og: 0, fg: 0, srm: 0 },
+                this.hopsValues    = { ibu: 0 },
+                this.yeastValues   = { attenuation: 0, abv: 0 },
+                resp.data
+            );
+        }.bind(this));
     };
 });

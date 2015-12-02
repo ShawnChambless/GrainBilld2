@@ -22,3 +22,25 @@ input[type='number'], input[type='text'], input[type='password']
         text-transform: capitalize
 .rotated90
     transform: rotateZ(90deg)
+.confirmBox
+    position: absolute
+    top: 68px
+    left: 36.5%
+    right: 36.5%
+    width: 500px
+    height: 318px
+    color: $straw
+    background: $blue
+    z-index: 2
+    text-align: center
+    padding: 4.5em
+    input
+        background: darken($blue, 20%)
+        margin: 50px 10px 0 10px
+.overlay
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background: rgba(#333, 0.4)

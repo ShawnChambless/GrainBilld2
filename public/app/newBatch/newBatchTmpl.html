@@ -1,4 +1,6 @@
 
+<div id="flashSuccess" class="flash-success newBatchFlash"><span>{{ response }}</span></div>
+<div id="flashError" class="flash-error newBatchFlash"><span>Sorry, something went wrong. Try again.</span></div>
 <div class="newBatchWrapper">
   <div class="module ingredients">
     <form>
@@ -19,7 +21,7 @@
     <label for="privateCheckbox">Private?
       <input type="checkbox" ng-model="recipe.isPrivate" ng-true-value="true" ng-false-value="false" id="privateCheckbox" class="privateBtn"/>
     </label>
-    <input type="submit" value="Save" ng-click="saveRecipeToUser(recipe, recipe.isPrivate)" ng-show="grainValues.fg && recipe.name && currentUser" class="saveRecipeBtn"/>
+    <input type="submit" value="Save" ng-click="saveRecipeToUser(recipe, recipe.isPrivate)" ng-if="grainValues.fg && recipe.name && currentUser" class="saveRecipeBtn"/>
   </div>
   <div class="module ingredientData">
     <input ng-show="showGrain" type="text" ng-model="ingredientFilter" placeholder="Filter grain..."/>

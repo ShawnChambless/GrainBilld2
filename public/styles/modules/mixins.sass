@@ -1,22 +1,27 @@
 @mixin submit ()
-        transition: $inputTransition
-        background: darken($blue, 20%)
-        &:hover
-            background: lighten($blue, 5%)
-        &:focus
-            box-shadow: 0 0 1px 1px $blue, 0 0 1px 1px $blue
-            border: none
-            outline: none
-            background: lighten($blue, 5%)
-
-
+    transition: $inputTransition
+    background: darken($blue, 20%)
+    &:hover
+        background: lighten($blue, 5%)
+    &:focus
+        box-shadow: 0 0 1px 1px $blue, 0 0 1px 1px $blue
+        border: none
+        outline: none
+        background: lighten($blue, 5%)
 
 @mixin fastTransition ($property)
     transition: $property 110ms ease-in-out
 
+@mixin halfSecondTransition($property)
+    transition: $property 500ms ease-in-out
+
+@mixin secondTransition($property)
+    transition: $property 1s ease-in-out
+
 @mixin trashCan ()
     cursor: pointer
+    color: $straw
     &:hover
-        color: lighten(red, 10%)
+        color: lighten(red, 5%)
         font-size: 1.4em
         margin-right: -2px

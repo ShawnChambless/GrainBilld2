@@ -1,3 +1,8 @@
+.flash-success.newBatchFlash#flashSuccess
+    span {{ response }}
+.flash-error.newBatchFlash#flashError
+    span Sorry, something went wrong. Try again.
+    
 .newBatchWrapper
     .module.ingredients
         form
@@ -15,7 +20,7 @@
         .recipe.fg(ng-show='grainValues.fg') FG: {{ grainValues.fg }}
         label(for='privateCheckbox') Private?
             input.privateBtn(type='checkbox' ng-model='recipe.isPrivate' ng-true-value='true' ng-false-value='false' id='privateCheckbox')
-        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe, recipe.isPrivate)' ng-show!='grainValues.fg && recipe.name && currentUser')
+        input.saveRecipeBtn(type='submit' value='Save' ng-click='saveRecipeToUser(recipe, recipe.isPrivate)' ng-if!='grainValues.fg && recipe.name && currentUser')
         
     .module.ingredientData
         input(ng-show='showGrain' type='text' ng-model='ingredientFilter' placeholder='Filter grain...')

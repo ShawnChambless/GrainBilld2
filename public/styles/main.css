@@ -227,6 +227,30 @@ input[type='number'], input[type='text'], input[type='password'] {
   -webkit-transform: rotateZ(90deg);
           transform: rotateZ(90deg); }
 
+.confirmBox {
+  position: absolute;
+  top: 68px;
+  left: 36.5%;
+  right: 36.5%;
+  width: 500px;
+  height: 318px;
+  color: #E4D96F;
+  background: #3090C7;
+  z-index: 2;
+  text-align: center;
+  padding: 4.5em; }
+  .confirmBox input {
+    background: #1c5575;
+    margin: 50px 10px 0 10px; }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(51, 51, 51, 0.4); }
+
 .data {
   font-size: 1.2em; }
 
@@ -306,12 +330,19 @@ section.login {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
   padding: 0.75em;
-  text-align: center; }
-  .flash-alert a {
-    color: #594c00;
-    text-decoration: underline; }
-    .flash-alert a:focus, .flash-alert a:hover {
-      color: black; }
+  text-align: center;
+  -webkit-transition: all 500ms ease-in-out;
+          transition: all 500ms ease-in-out; }
+  .flash-alert.newBatchFlash {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    top: -30px; }
+    .flash-alert.newBatchFlash.active {
+      -webkit-transition: all 400ms ease-in-out;
+              transition: all 400ms ease-in-out;
+      opacity: 1;
+      top: 48px; }
 
 .flash-error {
   background-color: #fbe3e4;
@@ -320,12 +351,19 @@ section.login {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
   padding: 0.75em;
-  text-align: center; }
-  .flash-error a {
-    color: #6a0f13;
-    text-decoration: underline; }
-    .flash-error a:focus, .flash-error a:hover {
-      color: #110203; }
+  text-align: center;
+  -webkit-transition: all 500ms ease-in-out;
+          transition: all 500ms ease-in-out; }
+  .flash-error.newBatchFlash {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    top: -30px; }
+    .flash-error.newBatchFlash.active {
+      -webkit-transition: all 400ms ease-in-out;
+              transition: all 400ms ease-in-out;
+      opacity: 1;
+      top: 48px; }
 
 .flash-notice {
   background-color: #e5edf8;
@@ -334,12 +372,19 @@ section.login {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
   padding: 0.75em;
-  text-align: center; }
-  .flash-notice a {
-    color: #19375f;
-    text-decoration: underline; }
-    .flash-notice a:focus, .flash-notice a:hover {
-      color: #04080e; }
+  text-align: center;
+  -webkit-transition: all 500ms ease-in-out;
+          transition: all 500ms ease-in-out; }
+  .flash-notice.newBatchFlash {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    top: -30px; }
+    .flash-notice.newBatchFlash.active {
+      -webkit-transition: all 400ms ease-in-out;
+              transition: all 400ms ease-in-out;
+      opacity: 1;
+      top: 48px; }
 
 .flash-success {
   background-color: #e6efc2;
@@ -348,12 +393,19 @@ section.login {
   margin-top: 0.75em;
   margin-bottom: 0.75em;
   padding: 0.75em;
-  text-align: center; }
-  .flash-success a {
-    color: #333c10;
-    text-decoration: underline; }
-    .flash-success a:focus, .flash-success a:hover {
-      color: black; }
+  text-align: center;
+  -webkit-transition: all 500ms ease-in-out;
+          transition: all 500ms ease-in-out; }
+  .flash-success.newBatchFlash {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    top: -30px; }
+    .flash-success.newBatchFlash.active {
+      -webkit-transition: all 400ms ease-in-out;
+              transition: all 400ms ease-in-out;
+      opacity: 1;
+      top: 48px; }
 
 header.navigation {
   background-color: #3090C7;
@@ -627,9 +679,10 @@ header.navigation {
       float: right;
       -webkit-transition: all 110ms ease-in-out;
               transition: all 110ms ease-in-out;
-      cursor: pointer; }
+      cursor: pointer;
+      color: #E4D96F; }
       .newBatchWrapper .module.recipeData i:hover {
-        color: #ff3333;
+        color: #ff1a1a;
         font-size: 1.4em;
         margin-right: -2px; }
 
@@ -681,9 +734,10 @@ header {
   left: -20px;
   -webkit-transition: all 110ms ease-in-out;
           transition: all 110ms ease-in-out;
-  cursor: pointer; }
+  cursor: pointer;
+  color: #E4D96F; }
   .recipeTrash:hover {
-    color: #ff3333;
+    color: #ff1a1a;
     font-size: 1.4em;
     margin-right: -2px; }
 
