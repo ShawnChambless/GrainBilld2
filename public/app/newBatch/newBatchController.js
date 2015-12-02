@@ -1,5 +1,5 @@
 angular.module('GrainBilld')
-.controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast, $rootScope, $state) {
+.controller('newBatchController', function($scope, newBatchService, getGrain, getHops, getYeast, $rootScope, $state, $timeout) {
     $scope.grainInDb        = getGrain;
     $scope.hopsInDb         = getHops;
     $scope.yeastInDb        = getYeast;
@@ -45,16 +45,24 @@ angular.module('GrainBilld')
         newBatchService.yeastInRecipe.splice(index, 1);
     };
 
-    $scope.saveRecipeToUser = function(recipe, isPrivate) {
+    $scope.saveRecipeToUser = function(recipe) {
         var user = $scope.currentUser.id;
-        newBatchService.saveRecipeToUser(recipe, isPrivate, user).then(function(resp) {
-            $scope.grainValues = $scope.hopsValues = $scope.yeastValues = 0;
-            newBatchService.grainValues = newBatchService.hopsValues = newBatchService.yeastValues = 0;
-            $scope.grainInRecipe = $scope.hopsInRecipe = $scope.yeastInRecipe = [];
-            newBatchService.grainInRecipe = newBatchService.hopsInRecipe = newBatchService.yeastInRecipe = [];
+        newBatchService.saveRecipeToUser(recipe, user).then(function(resp) {
+            console.log(resp);
+            $scope.response = resp;
+            var flashSuccess = document.getElementById('flashSuccess');
+            flashSuccess.classList.toggle('active');
+            $timeout(function() {
+                flashSuccess.classList.toggle('active');
+            }, 3000);
             $scope.showGrain = $scope.showHops = $scope.showYeast = false;
-            $scope.recipe = '';
-            $state.reload();
+            $scope.recipe = {}; $scope.grainInRecipe = newBatchService.grainInRecipe; $scope.hopsInRecipe = newBatchService.hopsInRecipe; $scope.yeastInRecipe = newBatchService.yeastInRecipe; $scope.grainValues = newBatchService.grainValues; $scope.hopsValues = newBatchService.hopsValues; $scope.yeastValues = newBatchService.yeastValues; $scope.recipe.isPrivate = true;
+        }, function(err) {
+            var flashError = document.getElementById('flashError');
+            flashError.classList.toggle('active');
+            $timeout(function() {
+                flashError.classList.toggle('active');
+            }, 3000);
         });
     };
 

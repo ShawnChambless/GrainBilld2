@@ -1,8 +1,9 @@
 angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
 .run(function($rootScope, $http, $cookies) {
-        $rootScope.currentUser = $cookies.getObject('user');
-        if($rootScope.currentUser ) $rootScope.showLogIn = true;
-        else getCurrentUser();
+    $rootScope.currentUser = $cookies.getObject('user');
+    if($rootScope.currentUser) $rootScope.showLogIn = true;
+    else getCurrentUser();
+
     function getCurrentUser() {
         return $http({
             method: 'GET',
@@ -21,21 +22,20 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
     }
 })
 .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('Login');
     $stateProvider
         .state('login', {
-            url: '/login',
+            url: '/Login',
             controller: 'loginCtrl',
             templateUrl: 'app/login/loginTmpl.html'
         })
         .state('home', {
-            url: '/home',
+            url: '/Home',
             controller: 'homeCtrl',
             templateUrl: 'app/home/homeTmpl.html',
             resolve: {
                 getRecipeTotals: function(homeService) {
                     return homeService.getRecipeTotals().then(function(resp) {
-                        console.log(resp);
                         return resp.data;
                     });
                 },
@@ -46,7 +46,7 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
                 }
             }
         })
-        .state('new-batch', {
+        .state('newBatch', {
             url: '/NewBatch',
             controller: 'newBatchController',
             templateUrl: 'app/newBatch/newBatchTmpl.html',
@@ -99,7 +99,7 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
                     if($rootScope.currentUser) {
                         return myRecipesService.getRecipes($rootScope.currentUser.id).then(function(resp) {
 
-                            return {recipes: resp.data};
+                            return { recipes: resp.data };
                         }, function(err) {
                             $state.go('home');
                         });
@@ -115,8 +115,7 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
             resolve: {
                 getCommunityRecipes: function($state, communityRecipesService) {
                     return communityRecipesService.getCommunityRecipes().then(function(resp) {
-                        console.log(resp.data);
-                        return {recipes: resp.data};
+                        return { recipes: resp.data };
                     }, function(err) {
                         $state.go('home');
                     });

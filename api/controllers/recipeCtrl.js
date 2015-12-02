@@ -6,14 +6,16 @@ module.exports = {
 
     newRecipe: function(req, res) {
         var recipeId;
+        var recipeName;
         Recipe.create(req.body.recipe, function(err, newRecipe) {
             if(err) return res.status(500).json(err);
             recipeId = newRecipe._id;
+            recipeName = newRecipe.name;
         });
         User.findById(req.body.recipe.user, function(err, user) {
             user.recipes.push(recipeId);
             user.save(function(err) {
-                return res.status(200).json('Recipe saved!');
+                return res.status(200).json(recipeName + ' saved!');
             });
         });
     },

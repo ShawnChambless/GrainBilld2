@@ -4,9 +4,11 @@
             .recipeWrapper
                 header 
                     h3.recipeName {{recipe.name}} 
-                    span.fa.fa-trash-o.recipeTrash(ng-click='removeRecipe(recipe._id, $index)')
+                    span.fa.fa-trash-o.recipeTrash(ng-click='showConfirmBox = !showConfirmBox')
                 h4 Private: {{ recipe.isPrivate }}
                 .stats
                     div(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}
                     div(ng-repeat='hops in recipe.hops') {{hops.amount}}oz {{hops.boilTime}}mins {{hops.name}}
                     div(ng-repeat='yeast in recipe.yeast') {{yeast.name}}
+                    .date Date saved: {{ recipe.dateCreated }}
+            confirm-dir

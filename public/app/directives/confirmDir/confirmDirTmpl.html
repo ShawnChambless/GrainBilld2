@@ -1,0 +1,5 @@
+<span ng-show="showConfirmBox" class="confirmBox"> 
+  <header>Are you sure you want to delete {{recipe.name}}?</header>
+  <input type="submit" ng-click="removeRecipe(recipe._id, $index)" value="Yes"/>
+  <input type="submit" ng-click="showConfirmBox = !showConfirmBox" value="No"/></span>
+<div ng-show="showConfirmBox" ng-click="showConfirmBox = !showConfirmBox" class="overlay"> </div>

@@ -1,0 +1,5 @@
+span.confirmBox(ng-show='showConfirmBox') 
+    header Are you sure you want to delete {{recipe.name}}?
+    input(type='submit' ng-click='removeRecipe(recipe._id, $index)' value='Yes') 
+    input(type='submit' ng-click='showConfirmBox = !showConfirmBox' value='No')
+div.overlay(ng-show='showConfirmBox' ng-click='showConfirmBox = !showConfirmBox') 

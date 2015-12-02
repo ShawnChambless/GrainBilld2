@@ -3,9 +3,10 @@
         .col-3(ng-repeat='recipe in recipes track by $index')
             .recipeWrapper
                 header 
-                    span.fa.fa-trash-o.recipeTrash(ng-click='removeRecipe(recipe._id, $index)' ng-if='recipe.user == currentUser.id')
                     h3 {{recipe.name}}
+                    span.fa.fa-trash-o.recipeTrash(ng-click='showConfirmBox = !showConfirmBox' ng-show='recipe.user == currentUser.id')
                 .stats
                     div(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}
                     div(ng-repeat='hops in recipe.hops') {{hops.amount}}oz {{hops.boilTime}}mins {{hops.name}}
                     div(ng-repeat='yeast in recipe.yeast') {{yeast.name}}
+            confirm-dir

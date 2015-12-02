@@ -13,9 +13,9 @@ html(lang='en')
             nav(role='navigation' ng-controller='navCtrl')
               ul#js-navigation-menu.navigation-menu.show
                 li.nav-link
-                  a(ng-href='#/home') Home
+                  a(ui-sref='home') Home
                 li.nav-link
-                  a(ng-href='#/NewBatch') New Batch
+                  a(ui-sref='newBatch') New Batch
                 li.nav-link
                     a(ng-href='#/IngredientInfo') Ingredient Info
                 li.nav-link.more
@@ -24,10 +24,10 @@ html(lang='en')
                     li(ng-if='currentUser')
                       a(ng-href='#/MyRecipes/{{currentUser.id}}') My Recipes
                     li
-                      a(ng-href='#/CommunityRecipes') Community Recipes
+                      a(ui-sref='communityRecipes') Community Recipes
                 li.nav-link.logout
                     a(ng-href='/auth/logout' ng-click='logOut()' ng-show='showLogIn') Log Out
-                    a(ng-href='#/login' ng-hide='showLogIn') Log In
+                    a(ui-sref='login' ng-hide='showLogIn') Log In
                     //-   ul.submenu
                     //-     li
                     //-       a(href='javascript:void(0)') Sub-submenu Item
@@ -41,10 +41,12 @@ html(lang='en')
                     //-     li
                     //-       a(href='javascript:void(0)') An Item
         ui-view
+        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
         //- script(src='https://code.jquery.com/jquery-2.1.4.min.js')
         //- script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js")
         //- script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js')
         //- script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min.js')
+        script(src='components/moment/moment.js')
         script(src='components/jquery/dist/jquery.min.js')
         script(src='components/angular/angular.js')
         script(src='components/angular-cookies/angular-cookies.js')

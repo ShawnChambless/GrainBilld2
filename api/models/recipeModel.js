@@ -1,6 +1,6 @@
 var mongoose    = require( 'mongoose' ),
-    User        = require( './userModel' );
-
+    User        = require( './userModel' ),
+    moment      = require( 'moment' )().local().format("dddd, MMMM Do YYYY, h:mm a Z");
 var recipeSchema = {
     user:                { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     name:                { type: String },
@@ -10,7 +10,8 @@ var recipeSchema = {
     batchSize:           { type: Number },
     projectedEfficiency: { type: Number },
     actualEfficiency:    { type: Number },
-    isPrivate:           { type: Boolean, default: true }
+    isPrivate:           { type: Boolean, default: true },
+    dateCreated:         { type: String, default: moment }
 };
 
 module.exports = new mongoose.Schema( recipeSchema );

@@ -9,22 +9,23 @@
       <div class="navigation-wrapper"><a ui-sref="home" class="logo"><span class="octicon octicon-beer"></span><span class="name">  Grain Billd</span></a><a id="js-mobile-menu" href="javascript:void(0)" class="navigation-menu-button">Menu</a>
         <nav role="navigation" ng-controller="navCtrl">
           <ul id="js-navigation-menu" class="navigation-menu show">
-            <li class="nav-link"><a ng-href="#/home">Home</a></li>
-            <li class="nav-link"><a ng-href="#/NewBatch">New Batch</a></li>
+            <li class="nav-link"><a ui-sref="home">Home</a></li>
+            <li class="nav-link"><a ui-sref="newBatch">New Batch</a></li>
             <li class="nav-link"><a ng-href="#/IngredientInfo">Ingredient Info</a></li>
             <li class="nav-link more"><a ng-href="javascript:void(0)">Recipes</a>
               <ul class="submenu">
                 <li ng-if="currentUser"><a ng-href="#/MyRecipes/{{currentUser.id}}">My Recipes</a></li>
-                <li><a ng-href="#/CommunityRecipes">Community Recipes</a></li>
+                <li><a ui-sref="communityRecipes">Community Recipes</a></li>
               </ul>
             </li>
-            <li class="nav-link logout"><a ng-href="/auth/logout" ng-click="logOut()" ng-show="showLogIn">Log Out</a><a ng-href="#/login" ng-hide="showLogIn">Log In</a>
+            <li class="nav-link logout"><a ng-href="/auth/logout" ng-click="logOut()" ng-show="showLogIn">Log Out</a><a ui-sref="login" ng-hide="showLogIn">Log In</a>
             </li>
           </ul>
         </nav>
       </div>
     </header>
     <ui-view></ui-view>
+    <script src="components/moment/moment.js"></script>
     <script src="components/jquery/dist/jquery.min.js"></script>
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-cookies/angular-cookies.js"></script>
