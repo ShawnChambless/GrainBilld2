@@ -4,7 +4,7 @@
     <div ng-repeat="recipe in recipes track by $index" class="col-3">
       <div class="recipeWrapper">
         <header> 
-          <h3>{{recipe.name}}</h3><span ng-click="showConfirmBox = !showConfirmBox" ng-if="recipe.user == currentUser.id" class="fa fa-trash-o recipeTrash"></span>
+          <h3>{{recipe.name}}</h3><span ng-click="showConfirmBox = !showConfirmBox" ng-show="recipe.user == currentUser.id" class="fa fa-trash-o recipeTrash"></span>
         </header>
         <div class="stats">
           <div ng-repeat="grain in recipe.grain">{{grain.amount}}lbs {{grain.name}}</div>

@@ -4,7 +4,7 @@
             .recipeWrapper
                 header 
                     h3 {{recipe.name}}
-                    span.fa.fa-trash-o.recipeTrash(ng-click='showConfirmBox = !showConfirmBox' ng-if='recipe.user == currentUser.id')
+                    span.fa.fa-trash-o.recipeTrash(ng-click='showConfirmBox = !showConfirmBox' ng-show='recipe.user == currentUser.id')
                 .stats
                     div(ng-repeat='grain in recipe.grain') {{grain.amount}}lbs {{grain.name}}
                     div(ng-repeat='hops in recipe.hops') {{hops.amount}}oz {{hops.boilTime}}mins {{hops.name}}
