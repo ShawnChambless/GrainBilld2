@@ -20,8 +20,9 @@
 
 @mixin trashCan ()
     cursor: pointer
-    color: $straw
     &:hover
         color: lighten(red, 5%)
         font-size: 1.4em
         margin-right: -2px
+    &.recipeTrash
+        color: $straw

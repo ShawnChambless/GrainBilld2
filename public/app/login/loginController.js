@@ -1,7 +1,7 @@
 angular.module('GrainBilld')
 .controller('loginCtrl', function($scope, loginService, $state, $rootScope, $cookies) {
     $scope.register = function(firstName, lastName, email, password) {
-        loginService.register(firstName, lastName, email, password).then(function(resp) {
+        loginService.register(firstName, lastName, email, password).success(function(resp) {
             $cookies.putObject('user', {
                 id: resp._id,
                 firstName: resp.firstName
@@ -11,12 +11,12 @@ angular.module('GrainBilld')
             $rootScope.showLogIn = true;
             $scope.showSuccess = true;
             $scope.showError = false;
-        }, function(err) {
+        }).error(function(err) {
             $scope.showError = true;
         });
     };
     $scope.login = function(email, password) {
-        loginService.login(email, password).then(function(resp) {
+        loginService.login(email, password).success(function(resp) {
             $cookies.putObject('user', {
                 id: resp._id,
                 firstName: resp.firstName
@@ -26,7 +26,7 @@ angular.module('GrainBilld')
             $rootScope.showLogIn = true;
             $scope.showSuccess = true;
             $scope.showError = false;
-        }, function(err) {
+        }).error(function(err) {
             $scope.showError = true;
         });
     };

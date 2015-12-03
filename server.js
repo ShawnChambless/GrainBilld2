@@ -14,7 +14,7 @@ var express     = require( 'express' ),
     http        = require( 'http' ),
     serve       = require( 'serve-favicon' ),
     moment      = require( 'moment' ),
-    port        = 8080,
+    port        = process.argv[2] || 8080,
     app         = express(),
     httpServer  = http.createServer(app);
 
