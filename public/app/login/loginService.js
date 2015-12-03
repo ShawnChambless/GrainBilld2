@@ -10,10 +10,10 @@ angular.module('GrainBilld')
                 email:      email,
                 password:   password
             }
-        }).then(function(resp) {
-            if(resp.status == 200) $state.go('home');
+        }).success(function(resp) {
+            $state.go('home');
             return resp.data;
-        }, function(err) {
+        }).error(function(err) {
             return err;
         });
     };
@@ -26,10 +26,10 @@ angular.module('GrainBilld')
                 email:      email,
                 password:   password
             }
-        }).then(function(resp) {
-            if(resp.status == 200) $state.go('home');
+        }).success(function(resp) {
+            $state.go('home');
             return resp.data;
-        }, function(err) {
+        }).error(function(err) {
             return err;
         });
     };

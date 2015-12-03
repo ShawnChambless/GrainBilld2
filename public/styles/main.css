@@ -679,12 +679,13 @@ header.navigation {
       float: right;
       -webkit-transition: all 110ms ease-in-out;
               transition: all 110ms ease-in-out;
-      cursor: pointer;
-      color: #E4D96F; }
+      cursor: pointer; }
       .newBatchWrapper .module.recipeData i:hover {
         color: #ff1a1a;
         font-size: 1.4em;
         margin-right: -2px; }
+      .newBatchWrapper .module.recipeData i.recipeTrash {
+        color: #E4D96F; }
 
 .my-recipes-wrapper {
   height: 100%;
@@ -734,12 +735,13 @@ header {
   left: -20px;
   -webkit-transition: all 110ms ease-in-out;
           transition: all 110ms ease-in-out;
-  cursor: pointer;
-  color: #E4D96F; }
+  cursor: pointer; }
   .recipeTrash:hover {
     color: #ff1a1a;
     font-size: 1.4em;
     margin-right: -2px; }
+  .recipeTrash.recipeTrash {
+    color: #E4D96F; }
 
 .ingredientInfo {
   display: -webkit-box;
