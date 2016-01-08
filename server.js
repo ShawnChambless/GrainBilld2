@@ -15,9 +15,16 @@ var express     = require( 'express' ),
     moment      = require( 'moment' ),
     port        = process.argv[2] || 8080,
     app         = express(),
-    httpServer  = http.createServer(app);
+    httpServer  = http.createServer(app),
+    allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'example.com');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+      next();
+    };
 
 app
+    .use(allowCrossDomain)
     .use(compression())
     .use(favicon('favicon.ico'))
     .use(express.static(__dirname + '/public'))
