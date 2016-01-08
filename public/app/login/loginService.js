@@ -3,7 +3,7 @@ angular.module('GrainBilld')
     this.register = function(firstName, lastName, email, password) {
         return $http({
             method: 'POST',
-            url:    'http://localhost:8080/auth/local/signup',
+            url:    '/auth/local/signup',
             data: {
                 firstName:  firstName,
                 lastName:   lastName,
@@ -21,7 +21,7 @@ angular.module('GrainBilld')
     this.login = function(email, password) {
         return $http({
             method: 'POST',
-            url: 'http://localhost:8080/auth/local/login',
+            url: '/auth/local/login',
             data: {
                 email:      email,
                 password:   password
