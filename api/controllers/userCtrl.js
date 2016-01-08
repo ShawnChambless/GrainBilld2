@@ -17,6 +17,7 @@ module.exports = {
 
   retrieveOne: function(req, res){
     var query = {};
+    console.log(req.user);
     if (req.user || req.params.user_id) query = { "_id": req.params.user_id };
     else query = { "email": req.body.email };
     User.findOne(query)
@@ -86,5 +87,5 @@ module.exports = {
     });
 
   }
-  
+
 };

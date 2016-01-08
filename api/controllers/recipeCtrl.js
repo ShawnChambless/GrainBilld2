@@ -41,6 +41,15 @@ module.exports = {
         });
     },
 
+    getRecipe: function(req, res) {
+        Recipe.findById(req.params.recipeId)
+        .populate('user', 'firstName lastName')
+        .exec(function(err, recipe) {
+            if(err) return res.status(500).json(err);
+            return res.status(200).json(recipe);
+        });
+    },
+
     removeRecipe: function(req, res, next) {
         Recipe.findByIdAndRemove(req.body.recipeId, function(err, resp) {
             if(err) return res.status(500).json(err);

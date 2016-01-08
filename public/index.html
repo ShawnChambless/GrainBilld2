@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="/">
     <title>Grain Billd</title>
     <link href="styles/main.css" rel="stylesheet">
   </head>
@@ -11,7 +12,7 @@
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"><a ui-sref="home">Home</a></li>
             <li class="nav-link"><a ui-sref="newBatch">New Batch</a></li>
-            <li class="nav-link"><a ng-href="#/IngredientInfo">Ingredient Info</a></li>
+            <li class="nav-link"><a ui-sref="ingredientInfo">Ingredient Info</a></li>
             <li class="nav-link more"><a ng-href="javascript:void(0)">Recipes</a>
               <ul class="submenu">
                 <li ng-if="currentUser"><a ng-href="#/MyRecipes/{{currentUser.id}}">My Recipes</a></li>

@@ -7,4 +7,6 @@ angular.module('GrainBilld')
 
     $scope.communityRecipes = getCommunityRecipes;
 
+    $scope.singleRecipe = homeService.singleRecipe;
+
 });

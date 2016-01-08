@@ -1,7 +1,7 @@
 {
   "name": "grainbilld2",
   "version": "0.0.0",
-  "description": "",
+  "description": "## Build Tools I'm using gulp, with the sass mixins library Bourbon (http://bourbon.io/), the Bouron grid-framework Neat (http://neat.bourbon.io/), and the Bourbon add-on Bitters (http://bitters.bourbon.io/).",
   "main": "server.js",
   "scripts": {
     "test": "mocha test",
@@ -37,11 +37,11 @@
     "bcryptjs": "^2.2.1",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
-    "cors": "^2.7.1",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "http": "0.0.0",
     "moment": "^2.10.6",
+    "mongodb": "^2.1.3",
     "mongoose": "^4.1.3",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",

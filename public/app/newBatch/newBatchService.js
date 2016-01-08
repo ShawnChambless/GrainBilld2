@@ -32,26 +32,6 @@ angular.module('GrainBilld')
         calcGrainTotals(arr, grainValues, yeastValues);
     }
 
-    function editHopsInRecipe(hops, arr, hopsValues) {
-        arr.push({
-            name: hops.name,
-            alphaAcid: (hops.alphaAcid / 100),
-            amount: 1,
-            boilTime: 10,
-            description: hops.description
-        });
-        calcHopsTotals(arr, hopsValues);
-    }
-
-    function editYeastInRecipe(yeast, arr, yeastValues, grainValues) {
-        arr.push({
-            name: yeast.name,
-            attenuation: (yeast.minimumAttenuation + yeast.maximumAttenuation) / 2,
-            description: yeast.description
-        });
-        calcYeastTotals(arr, yeastValues, grainValues);
-    }
-
     function calcGrainTotals(arr, grainValues, yeastValues) {
         var efficiency = 0.75;
         var batchSize = 5;
@@ -63,12 +43,39 @@ angular.module('GrainBilld')
         });
     }
 
+    function calcOG(sg, grainAmount, efficiency) {
+        var batchSize = 5;
+        var og = ((((sg * grainAmount) * efficiency) / batchSize) / 1000) + 1;
+        return og;
+    }
+
+    function editHopsInRecipe(hops, arr, hopsValues) {
+        arr.push({
+            name: hops.name,
+            alphaAcid: (hops.alphaAcid / 100),
+            amount: 1,
+            boilTime: 10,
+            description: hops.description
+        });
+        calcHopsTotals(arr, hopsValues);
+    }
+
     function calcHopsTotals(arr, hopsValues) {
         hopsValues.ibu = 0;
         arr.forEach(function(item) {
             hopsValues.ibu += calcIBU(item);
         });
     }
+
+    function editYeastInRecipe(yeast, arr, yeastValues, grainValues) {
+        arr.push({
+            name: yeast.name,
+            attenuation: (yeast.minimumAttenuation + yeast.maximumAttenuation) / 2,
+            description: yeast.description
+        });
+        calcYeastTotals(arr, yeastValues, grainValues);
+    }
+
 
     function calcYeastTotals(arr, yeastValues, grainValues) {
         yeastValues.attenuation = 0;
@@ -80,11 +87,7 @@ angular.module('GrainBilld')
         });
     }
 
-    function calcOG(sg, grainAmount, efficiency) {
-        var batchSize = 5;
-        var og = 1 + (((sg * grainAmount) * efficiency) / batchSize) / 1000;
-        return og;
-    }
+
 
     function calcFG(og, yeastAttenuation) {
         var fg = 1 + ((og * (1 - (yeastAttenuation))) / 1000);

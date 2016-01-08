@@ -121,5 +121,17 @@ angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
                     });
                 }
             }
+        })
+        .state('recipe', {
+            url: '/Recipe/:recipeId',
+            templateUrl: 'app/recipe/recipeTmpl.html',
+            controller: 'recipeCtrl',
+            resolve: {
+                getRecipe: function(recipeService, $stateParams) {
+                    return recipeService.getRecipe($stateParams.recipeId).then(function(resp) {
+                        return resp.data;
+                    });
+                }
+            }
         });
 });
