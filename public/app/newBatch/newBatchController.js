@@ -48,7 +48,6 @@ angular.module('GrainBilld')
     $scope.saveRecipeToUser = function(recipe) {
         var user = $scope.currentUser.id;
         newBatchService.saveRecipeToUser(recipe, user).then(function(resp) {
-            console.log(resp);
             $scope.response = resp;
             var flashSuccess = document.getElementById('flashSuccess');
             flashSuccess.classList.toggle('active');

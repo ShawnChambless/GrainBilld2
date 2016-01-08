@@ -1,5 +1,5 @@
 angular.module('GrainBilld')
-.service('homeService', function($http, $q) {
+.service('homeService', function($http) {
 
     this.getGrain = function() {
         return $http({
@@ -24,5 +24,6 @@ angular.module('GrainBilld')
     this.getRecipeTotals = function() {
         return $http.get('/api/recipes');
     };
+
 
 });

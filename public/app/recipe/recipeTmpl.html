@@ -1,0 +1,8 @@
+
+<header class="recipe">
+  <div class="title">{{ recipe.name }}</div>
+  <div class="user">Submitted by: {{ recipe.user.firstName }} {{ recipe.user.lastName }}</div>
+</header>
+<div class="dataBar">
+  <div ng-repeat="value in recipe.grainValues" class="grain"></div>{{value}}
+</div>

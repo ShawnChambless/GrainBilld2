@@ -1,0 +1,6 @@
+header.recipe
+    .title {{ recipe.name }}
+    .user Submitted by: {{ recipe.user.firstName }} {{ recipe.user.lastName }}
+.dataBar
+    .grain(ng-repeat='value in recipe.grainValues')
+    {{value}}

@@ -259,6 +259,10 @@ aside.right {
   background: #3090C7;
   padding: 1em;
   color: #f7f7f7; }
+  aside.right a {
+    color: #f7f7f7; }
+    aside.right a:hover {
+      color: #E4D96F; }
 
 p.announcement {
   text-align: center;
@@ -346,7 +350,7 @@ section.login {
 
 .flash-error {
   background-color: #fbe3e4;
-  color: #96151b;
+  color: #97161b;
   margin: 0 auto;
   margin-top: 0.75em;
   margin-bottom: 0.75em;
@@ -785,3 +789,8 @@ header {
     .ingredientInfo header input[type='text'] {
       width: 60%;
       height: 35px; }
+
+header.recipe {
+  text-align: center; }
+  header.recipe .user {
+    font-size: .8em; }

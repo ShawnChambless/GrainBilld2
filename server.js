@@ -1,7 +1,6 @@
 var express     = require( 'express' ),
     session     = require( 'express-session' ),
     bodyParser  = require( 'body-parser' ),
-    cors        = require( 'cors' ),
     mongoose    = require( 'mongoose' ),
     passport    = require( './api/passport/config' ),
     compression = require( 'compression' ),
@@ -23,7 +22,6 @@ app
     .use(favicon('favicon.ico'))
     .use(express.static(__dirname + '/public'))
     .use(bodyParser.json())
-    .use(cors())
     .use(session({
         secret: 'JESUS-MakEs-really-good-beer',
         resave: 'false',
@@ -47,7 +45,7 @@ app
     .post(   '/api/users',                       userCtrl.create )
     .get(    '/api/users/getUser',               userCtrl.getCurrentUser)
     .get(    '/api/user/recipes/:userId',        userCtrl.getRecipes)
-    .put(    '/api/user/recipes/remove', recipeCtrl.removeRecipe)
+    .put(    '/api/user/recipes/remove',         recipeCtrl.removeRecipe)
     .put(    '/api/users/:user_id',              userCtrl.update )
     .post(   '/api/users/newRecipe',             recipeCtrl.newRecipe)
     .delete( '/api/users/:user_id',              userCtrl.remove )
@@ -56,6 +54,7 @@ app
 
     .get(    '/api/recipes/community',    recipeCtrl.getCommunityRecipes)
     .get(    '/api/recipes',              recipeCtrl.getRecipeTotals)
+    .get(    '/api/recipe/:recipeId',     recipeCtrl.getRecipe)
 
 //Database endpoints
 

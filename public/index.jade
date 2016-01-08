@@ -1,6 +1,7 @@
 doctype html
 html(lang='en')
     head
+        base(href='/')
         title Grain Billd
         link(href='styles/main.css' rel='stylesheet')
     body(ng-app='GrainBilld')
@@ -17,7 +18,7 @@ html(lang='en')
                 li.nav-link
                   a(ui-sref='newBatch') New Batch
                 li.nav-link
-                    a(ng-href='#/IngredientInfo') Ingredient Info
+                    a(ui-sref='ingredientInfo') Ingredient Info
                 li.nav-link.more
                   a(ng-href='javascript:void(0)') Recipes
                   ul.submenu
