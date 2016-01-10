@@ -1,7 +1,6 @@
 var express     = require( 'express' ),
     session     = require( 'express-session' ),
     bodyParser  = require( 'body-parser' ),
-    cors        = require( 'cors' ),
     mongoose    = require( 'mongoose' ),
     passport    = require( './api/passport/config' ),
     compression = require( 'compression' ),
@@ -23,7 +22,6 @@ app
     .use(favicon('favicon.ico'))
     .use(express.static(__dirname + '/public'))
     .use(bodyParser.json())
-    .use(cors())
     .use(session({
         secret: 'JESUS-MakEs-really-good-beer',
         resave: 'false',
