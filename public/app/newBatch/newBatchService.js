@@ -6,17 +6,18 @@ angular.module('GrainBilld')
     this.grainValues   = { og: 0, fg: 0, srm: 0 };
     this.hopsValues    = { ibu: 0 };
     this.yeastValues   = { attenuation: 0, abv: 0 };
+    var self = this;
 
     this.addIngredient = function(ingredientType, ingredient) {
         switch(ingredientType) {
             case 'grain':
-                editGrainInRecipe(ingredient, this.grainInRecipe, this.grainValues, this.yeastValues);
+                editGrainInRecipe(ingredient, self.grainInRecipe, self.grainValues, self.yeastValues);
                 break;
             case 'hops':
-                editHopsInRecipe(ingredient, this.hopsInRecipe, this.hopsValues);
+                editHopsInRecipe(ingredient, self.hopsInRecipe, self.hopsValues);
                 break;
             case 'yeast':
-                editYeastInRecipe(ingredient, this.yeastInRecipe, this.yeastValues, this.grainValues);
+                editYeastInRecipe(ingredient, self.yeastInRecipe, self.yeastValues, self.grainValues);
                 break;
         }
     };
@@ -30,6 +31,9 @@ angular.module('GrainBilld')
             description: grain.description
         });
         calcGrainTotals(arr, grainValues, yeastValues);
+        self.grainValues.og = self.grainInRecipe.reduce(function(a, b) {
+            return console.log(a.og, b.og);
+        });
     }
 
     function calcGrainTotals(arr, grainValues, yeastValues) {
@@ -38,15 +42,16 @@ angular.module('GrainBilld')
         grainValues.og = 0;
         grainValues.fg = 0;
         arr.forEach(function(item) {
-            grainValues.og += calcOG(item.sg, item.amount, efficiency);
-            grainValues.srm += parseFloat(((item.amount + item.lovibond) / (batchSize * 0.264))/10);
+            calcOG(arr, item.sg, item.amount, efficiency);
+            grainValues.srm += parseFloat((((item.amount + item.lovibond) / (batchSize * 0.264))/10).toFixed(2));
         });
     }
 
-    function calcOG(sg, grainAmount, efficiency) {
+    function calcOG(arr, sg, grainAmount, efficiency) {
         var batchSize = 5;
-        var og = ((((sg * grainAmount) * efficiency) / batchSize) / 1000) + 1;
-        return og;
+        self.grainInRecipe.filter(function(item) {
+            item.og =  ((((parseFloat(sg) * grainAmount) * efficiency) / batchSize) / 1000);
+        });
     }
 
     function editHopsInRecipe(hops, arr, hopsValues) {
