@@ -23,6 +23,7 @@
     "jquery": "~2.1.4",
     "angular-cookies": "~1.4.7",
     "font-awesome": "fontawesome#~4.4.0",
-    "moment": "~2.10.6"
+    "moment": "~2.10.6",
+    "angular-loading-bar": "~0.8.0"
   }
 }
