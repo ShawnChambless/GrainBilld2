@@ -15,7 +15,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
           appearance: none;
   background-color: #3090C7;
   border: 0;
-  border-radius: 3px;
+  border-radius: 1px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -69,7 +69,7 @@ input[type="color"], input[type="date"], input[type="datetime"], input[type="dat
 select[multiple] {
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 3px;
+  border-radius: 1px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
@@ -165,7 +165,6 @@ h4,
 h5,
 h6 {
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-  font-size: 1em;
   line-height: 1.2;
   margin: 0 0 0.75em; }
 
