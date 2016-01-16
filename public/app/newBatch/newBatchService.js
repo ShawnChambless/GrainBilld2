@@ -6,78 +6,70 @@ angular.module('GrainBilld')
     this.grainValues   = { og: 0, fg: 0, srm: 0 };
     this.hopsValues    = { ibu: 0 };
     this.yeastValues   = { attenuation: 0, abv: 0 };
-    var self = this,
-        grainInRecipe = this.grainInRecipe,
-        hopsInRecipe = this.hopsInRecipe,
-        yeastInRecipe = this.yeastInRecipe;
+    var self = this, grainInRecipe = this.grainInRecipe, hopsInRecipe = this.hopsInRecipe, yeastInRecipe = this.yeastInRecipe, grainValues = this.grainValues, hopsValues = this.hopsValues, yeastValues = this.yeastValues;
     
     this.addIngredient = function(ingredientType, ingredient) {
         switch(ingredientType) {
             case 'grain':
-                editGrainInRecipe(ingredient, grainInRecipe, this.grainValues, this.yeastValues);
+                editGrainInRecipe(ingredient);
                 break;
             case 'hops':
-                editHopsInRecipe(ingredient, hopsInRecipe, this.hopsValues);
+                editHopsInRecipe(ingredient);
                 break;
             case 'yeast':
-                editYeastInRecipe(ingredient, yeastInRecipe, this.yeastValues, this.grainValues);
+                editYeastInRecipe(ingredient);
                 break;
         }
     };
 
-    function editGrainInRecipe(grain, arr, grainValues, yeastValues) {
-        arr.push({
+    function editGrainInRecipe(grain) {
+        grainInRecipe.push({
             name: grain.name,
             lovibond: grain.lovibond,
             sg: ((grain.sg - 1) * 1000).toFixed(1),
             amount: 5,
             description: grain.description
         });
-        calcGrainTotals(arr, grainValues, yeastValues);
+        calcGrainTotals();
     }
 
-    function editHopsInRecipe(hops, arr, hopsValues) {
-        arr.push({
+    function editHopsInRecipe(hops) {
+        hopsInRecipe.push({
             name: hops.name,
             alphaAcid: (hops.alphaAcid / 100),
             amount: 1,
             boilTime: 10,
             description: hops.description
         });
-        calcHopsTotals(arr, hopsValues);
+        calcHopsTotals();
     }
 
-    function editYeastInRecipe(yeast, arr, yeastValues, grainValues) {
-        arr.push({
+    function editYeastInRecipe(yeast) {
+        yeastInRecipe.push({
             name: yeast.name,
-            attenuation: (yeast.minimumAttenuation + yeast.maximumAttenuation) / 2,
+            attenuation: ((yeast.minimumAttenuation + yeast.maximumAttenuation) / 2),
             description: yeast.description
         });
-        calcYeastTotals(arr, yeastValues, grainValues);
+        calcYeastTotals();
     }
 
-    function calcGrainTotals(arr, grainValues, yeastValues) {
+    function calcGrainTotals() {
         var efficiency = 0.75;
         var batchSize = 5;
         grainValues.og = calcOG(batchSize, efficiency);
         grainValues.srm = calcSRM(batchSize);
     }
 
-    function calcHopsTotals(arr, hopsValues) {
+    function calcHopsTotals() {
         hopsValues.ibu = 0;
         arr.forEach(function(item) {
             hopsValues.ibu += calcIBU(item);
         });
     }
 
-    function calcYeastTotals(arr, yeastValues, grainValues) {
-        yeastValues.attenuation = 0;
-        yeastValues.abv = 0;
-        arr.forEach(function(item) {
-            yeastValues.attenuation += calcAttenuation(grainValues.og, grainValues.fg);
-            grainValues.fg += calcFG(grainValues.og, yeastValues.attenuation);
-            yeastValues.abv = calcABV(grainValues.og, grainValues.fg);
-        });
+    function calcYeastTotals() {
+        grainValues.fg = calcFG(grainValues.og, yeastValues.attenuation);
+        yeastValues.abv = calcABV(grainValues.og, grainValues.fg);
     }
 
     function calcOG(batchSize, efficiency) {
@@ -93,17 +85,23 @@ angular.module('GrainBilld')
         return (1 + grainSg).toFixed(3);
     }
 
-    function calcFG(og, yeastAttenuation) {
-        return 1 + ((og * (1 - (yeastAttenuation))) / 1000);
+    function calcFG(og) {
+        var fg =  yeastInRecipe.map(function(item) {
+            var initial = ((og - 1) * (1 - (item.attenuation / 100))) + 1;
+            return Math.round(initial * 1000) / 1000;
+        });
+        return parseFloat(fg);
     }
     
     function calcSRM(batchSize) {
-        var srm =  grainInRecipe.map(function(item) {
-            parseFloat(((item.amount + item.lovibond) / (batchSize * 0.264))/10); 
+        var srm = 0; 
+        srm = grainInRecipe.map(function(item) {
+            var mcu = ((item.lovibond * item.amount) / batchSize);
+            return 1.4922 * (Math.pow(mcu, 0.6859));
         }).reduce(function(a, b) {
             return a + b;
         });
-        return srm;
+        return srm.toFixed(2);
     }
 
     function calcIBU(hops) {
@@ -113,14 +111,8 @@ angular.module('GrainBilld')
         return ibu;
     }
 
-    function calcAttenuation(og, fg) {
-        var attenuation = ((og - fg) / og);
-        return attenuation;
-    }
-
     function calcABV(og, fg) {
-        var abv = (og - fg) * 131.25;
-        return abv;
+        return ((og - fg) * 131).toFixed(2);
     }
 
     function findHopUtilization (boilTime){
