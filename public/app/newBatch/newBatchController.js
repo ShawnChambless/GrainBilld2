@@ -12,8 +12,10 @@ angular.module('GrainBilld')
     $scope.grains           = 'grain';
     $scope.hopss            = 'hops';
     $scope.yeasts           = 'yeast';
-    $scope.recipe           = {};
-    $scope.recipe.isPrivate = true;
+    $scope.recipe           = { isPrivate: true };
+    $scope.amount           = 0;
+    $scope.hops.boilTime    = 60;
+    newBatchService.recipe  = $scope.recipe;
 
     $scope.showGrainData = function() {
         $scope.showGrain    = true;

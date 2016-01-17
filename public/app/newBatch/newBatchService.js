@@ -6,15 +6,16 @@ angular.module('GrainBilld')
     this.grainValues   = { og: 0, fg: 0, srm: 0 };
     this.hopsValues    = { ibu: 0 };
     this.yeastValues   = { attenuation: 0, abv: 0 };
+    this.recipe        = {};
     var self = this, grainInRecipe = this.grainInRecipe, hopsInRecipe = this.hopsInRecipe, yeastInRecipe = this.yeastInRecipe, grainValues = this.grainValues, hopsValues = this.hopsValues, yeastValues = this.yeastValues;
-    
-    this.addIngredient = function(ingredientType, ingredient) {
+    this.addIngredient = function(ingredientType, ingredient, recipe) {
+        console.log(self.recipe);
         switch(ingredientType) {
             case 'grain':
-                editGrainInRecipe(ingredient);
+                editGrainInRecipe(ingredient, self.recipe.batchSize);
                 break;
             case 'hops':
-                editHopsInRecipe(ingredient);
+                editHopsInRecipe(ingredient, self.recipe.batchSize);
                 break;
             case 'yeast':
                 editYeastInRecipe(ingredient);
@@ -22,7 +23,7 @@ angular.module('GrainBilld')
         }
     };
 
-    function editGrainInRecipe(grain) {
+    function editGrainInRecipe(grain, batchSize) {
         grainInRecipe.push({
             name: grain.name,
             lovibond: grain.lovibond,
@@ -30,7 +31,7 @@ angular.module('GrainBilld')
             amount: 5,
             description: grain.description
         });
-        calcGrainTotals();
+        calcGrainTotals(batchSize);
     }
 
     function editHopsInRecipe(hops) {
@@ -53,16 +54,15 @@ angular.module('GrainBilld')
         calcYeastTotals();
     }
 
-    function calcGrainTotals() {
+    function calcGrainTotals(batchSize) {
         var efficiency = 0.75;
-        var batchSize = 5;
         grainValues.og = calcOG(batchSize, efficiency);
         grainValues.srm = calcSRM(batchSize);
     }
 
-    function calcHopsTotals() {
+    function calcHopsTotals(batchSize) {
         hopsValues.ibu = 0;
-        hopsValues.ibu = calcIBU();
+        hopsValues.ibu = calcIBU(batchSize);
     }
 
     function calcYeastTotals() {
@@ -102,8 +102,7 @@ angular.module('GrainBilld')
         return srm.toFixed(2);
     }
 
-    function calcIBU(hops) {
-        var batchSize = 5,
+    function calcIBU(hops, batchSize) {
         ibu = hopsInRecipe.map(function(item) {
             var utilization = findHopUtilization(item.boilTime);
             return parseFloat(((item.alphaAcid * utilization * 74.89 / batchSize) * 100).toFixed(1));
@@ -111,7 +110,6 @@ angular.module('GrainBilld')
         .reduce(function(a, b) {
             return a + b;
         });
-        console.log(hopsInRecipe, ibu);
         return parseFloat(ibu);
     }
 
@@ -140,24 +138,24 @@ angular.module('GrainBilld')
                 recipe: {
                     user: user,
                     name: recipe.name,
-                    grain: this.grainInRecipe,
-                    hops: this.hopsInRecipe,
-                    yeast: this.yeastInRecipe,
-                    batchSize: recipe.batchSize,
+                    grain: grainInRecipe,
+                    hops: hopsInRecipe,
+                    yeast: yeastInRecipe,
+                    batchSize: selfrecipe.batchSize,
                     projectedEfficiency: recipe.efficiency,
                     isPrivate: recipe.isPrivate
                 }
             }
         }).then(function(resp) {
             return (
-                this.grainInRecipe = [],
-                this.hopsInRecipe  = [],
-                this.yeastInRecipe = [],
-                this.grainValues   = { og: 0, fg: 0, srm: 0 },
-                this.hopsValues    = { ibu: 0 },
-                this.yeastValues   = { attenuation: 0, abv: 0 },
+                grainInRecipe = [],
+                hopsInRecipe  = [],
+                yeastInRecipe = [],
+                grainValues   = { og: 0, fg: 0, srm: 0 },
+                hopsValues    = { ibu: 0 },
+                yeastValues   = { attenuation: 0, abv: 0 },
                 resp.data
             );
-        }.bind(this));
+        });
     };
 });
