@@ -1,5 +1,11 @@
 angular.module('GrainBilld', ['ui.router', 'angular-loading-bar', 'ngCookies'])
-.run(function($rootScope, $http, $cookies) {
+.run(function($rootScope, $http, $cookies, $location, $state) {
+    
+    $rootScope.$watch(function() {
+        var url = $location.url(); 
+        $rootScope.currentUrl = '#' + url; 
+    });
+        
     $rootScope.currentUser = $cookies.getObject('user');
     if($rootScope.currentUser) $rootScope.showLogIn = true;
     else getCurrentUser();

@@ -9,7 +9,7 @@ html(lang='en')
             a.logo(ui-sref='home')
               span.octicon.octicon-beer
               span.name   Grain Billd
-            a#js-mobile-menu.navigation-menu-button(href='javascript:void(0)') Menu
+            a#js-mobile-menu.navigation-menu-button(ng-href="{{currentUrl}}") Menu
             nav(role='navigation' ng-controller='navCtrl')
               ul#js-navigation-menu.navigation-menu.show
                 li.nav-link
@@ -19,7 +19,7 @@ html(lang='en')
                 li.nav-link
                     a(ng-href='#/IngredientInfo') Ingredient Info
                 li.nav-link.more
-                  a(ng-href='javascript:void(0)') Recipes
+                  a(ng-href="{{currentUrl}}") Recipes
                   ul.submenu
                     li(ng-if='currentUser')
                       a(ng-href='#/MyRecipes/{{currentUser.id}}') My Recipes
@@ -30,16 +30,16 @@ html(lang='en')
                     a(ui-sref='login' ng-hide='showLogIn') Log In
                     //-   ul.submenu
                     //-     li
-                    //-       a(href='javascript:void(0)') Sub-submenu Item
+                    //-       a(href="{{currentUrl}}") Sub-submenu Item
                     //-     li
-                    //-       a(href='javascript:void(0)') Another Item
+                    //-       a(href="{{currentUrl}}") Another Item
                     //- li.more
-                    //-   a(href='javascript:void(0)') Another submenu
+                    //-   a(href="{{currentUrl}}") Another submenu
                     //-   ul.submenu
                     //-     li
-                    //-       a(href='javascript:void(0)') Sub-submenu
+                    //-       a(href="{{currentUrl}}") Sub-submenu
                     //-     li
-                    //-       a(href='javascript:void(0)') An Item
+                    //-       a(href="{{currentUrl}}") An Item
         ui-view
         script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
         script(src='https://code.jquery.com/jquery-2.1.4.min.js')

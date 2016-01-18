@@ -5,17 +5,17 @@ header.navigation {
   $dark-gray: #333 !default;
   $large-screen: em(860) !default;
   $navigation-padding: 1em;
-  $navigation-background: $blue;
-  $navigation-color: transparentize(white, 0.1);
-  $navigation-color-hover: $straw;
-  $logo-color-hover: white;
+  $navigation-background: #555;
+  $navigation-color: #f7f7f7;
+  $navigation-color-hover: $blue_contrast;
+  $logo-color-hover: $navigation-color;
   $navigation-height: 60px;
   $navigation-nav-button-background: $action-color;
   $navigation-nav-button-background-hover: lighten($navigation-background, 30%);
   $navigation-nav-button-border: 1px solid lighten($navigation-nav-button-background, 20%);
   $navigation-search-background: lighten($navigation-background, 5);
   $navigation-search-border: 1px solid darken($navigation-background, 5);
-  $navigation-active-link-color: transparentize(white, 0.5);
+  $navigation-active-link-color: $blue_contrast;
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: 12em;
   $horizontal-bar-mode: $large-screen;
@@ -26,7 +26,7 @@ header.navigation {
   width: 100%;
   z-index: 999;
   text-transform: capitalize;
-
+  
   .navigation-wrapper {
     @include clearfix;
     position: relative;
@@ -40,10 +40,9 @@ header.navigation {
     padding-left: $navigation-padding;
     padding-right: 2em;
     min-width: 20%;
-    color: $straw;
-    &:hover {
-        color: $logo-color-hover;
-    }
+    color: $navigation-color;
+    transition: all 100ms ease-in-out;
+ 
     span {
       max-height: $navigation-height;
       font-size: 2.3em;
@@ -93,6 +92,7 @@ header.navigation {
     padding: 0;
     width: 100%;
     z-index: 9999;
+    
 
     &.show {
       display: block;
@@ -104,9 +104,11 @@ header.navigation {
       padding: 0;
     }
   }
-
-  // The nav items
-
+.logo, ul li.nav-link a{
+    &:hover {  
+        filter: brightness(0.8);
+    }
+}
   ul li.nav-link {
     background: $navigation-background;
     display: block;
@@ -116,14 +118,14 @@ header.navigation {
     text-align: right;
     width: 100%;
     z-index: 9999;
+    
 
     @include media ($horizontal-bar-mode) {
-      background: transparent;
       display: inline;
-      line-height: $navigation-height;
       text-decoration: none;
       width: auto;
     }
+
 
     a {
       color: $navigation-color;
@@ -134,10 +136,6 @@ header.navigation {
         padding-right: 1em;
       }
 
-      &:focus,
-      &:hover {
-        color: $navigation-color-hover;
-      }
     }
   }
 
@@ -185,27 +183,22 @@ header.navigation {
     > a {
       padding-right: 1.6em;
       position: relative;
-
+      
       @include media($horizontal-bar-mode) {
         margin-right: $navigation-submenu-padding;
       }
 
-      &:after {
-        content: '›';
-        font-size: 1.2em;
-        position: absolute;
-        right: $navigation-submenu-padding / 2;
-      }
     }
 
     &:focus > .submenu,
     &:hover > .submenu {
-      display: block;
+      display: block;      
     }
 
     @include media($horizontal-bar-mode) {
       padding-right: 0.8em;
       position: relative;
+      
     }
   }
 
@@ -229,6 +222,7 @@ header.navigation {
     li {
       display: block;
       padding-right: 0;
+      background-color: $navigation-background;
 
       @include media($horizontal-bar-mode) {
         line-height: $navigation-height / 1.3;
@@ -246,13 +240,13 @@ header.navigation {
       }
 
       a {
-        background-color: darken($navigation-background, 3%);
+      
         display: inline-block;
         text-align: right;
         width: 100%;
 
         @include media($horizontal-bar-mode) {
-          background-color: $navigation-background;
+          
           padding-left: $navigation-submenu-padding;
           text-align: left;
           width: $navigation-submenu-width;

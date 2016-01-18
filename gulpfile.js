@@ -31,7 +31,7 @@ gulp.task('sass', function(done) {
     gulp.src('public/styles/main.sass')
         .pipe(plumber())
         .pipe(bulkSass())
-        .pipe(sass())
+        .pipe(sass({outputStyle: 'expanded'}))
         .pipe(prefix('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(gulp.dest('./public/styles/'))
         .pipe(compressCss({
