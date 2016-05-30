@@ -498,7 +498,6 @@ section.login input[type='submit']:focus {
 }
 
 header.navigation {
-  background-color: #555;
   font-size: 1.2em;
   min-height: 60px;
   width: 100%;
@@ -518,7 +517,6 @@ header.navigation .navigation-wrapper::after {
 }
 
 header.navigation .logo {
-  margin-top: -5px;
   float: left;
   height: 60px;
   padding-left: 1em;
@@ -532,6 +530,7 @@ header.navigation .logo {
 header.navigation .logo span {
   max-height: 60px;
   font-size: 2.3em;
+  color: #54a7d6;
 }
 
 header.navigation .navigation-menu-button {
@@ -559,6 +558,7 @@ header.navigation nav {
   float: none;
   min-height: 60px;
   z-index: 9999999;
+  margin-top: 5px;
 }
 
 @media screen and (min-width: 53.75em) {
@@ -596,7 +596,6 @@ header.navigation .logo:hover, header.navigation ul li.nav-link a:hover {
 }
 
 header.navigation ul li.nav-link {
-  background: #555;
   display: block;
   line-height: 60px;
   overflow: hidden;
@@ -615,15 +614,12 @@ header.navigation ul li.nav-link {
 }
 
 header.navigation ul li.nav-link a {
-  color: #f7f7f7;
   display: inline-block;
+  text-align: center;
   text-decoration: none;
-}
-
-@media screen and (min-width: 53.75em) {
-  header.navigation ul li.nav-link a {
-    padding-right: 1em;
-  }
+  padding: 0 0.5em;
+  border: 3px solid #54a7d6;
+  border-radius: 2px;
 }
 
 header.navigation .active-nav-item a {
@@ -650,17 +646,17 @@ header.navigation li.more.nav-link a {
 }
 
 header.navigation li.more.nav-link > a {
-  padding-right: 0.6em;
+  padding: 0 0.9em;
 }
 
 header.navigation li.more.nav-link > a:after {
   position: absolute;
   top: auto;
-  right: -0.4em;
+  right: 0.1em;
   bottom: auto;
   left: auto;
   content: '\25BE';
-  color: #f7f7f7;
+  color: #999;
 }
 
 header.navigation li.more {
@@ -673,7 +669,6 @@ header.navigation li.more a {
 }
 
 header.navigation li.more > a {
-  padding-right: 1.6em;
   position: relative;
 }
 
@@ -710,7 +705,7 @@ header.navigation ul.submenu {
 
 @media screen and (min-width: 53.75em) {
   header.navigation ul.submenu .submenu {
-    left: 11.8em;
+    left: 9.8em;
     top: 0;
   }
 }
@@ -746,7 +741,7 @@ header.navigation ul.submenu li a {
   header.navigation ul.submenu li a {
     padding-left: 1em;
     text-align: left;
-    width: 12em;
+    width: 10em;
   }
 }
 

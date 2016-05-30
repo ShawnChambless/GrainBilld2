@@ -1,6 +1,5 @@
 var gulp        = require( 'gulp' ),
     prefix      = require( 'gulp-autoprefixer' ),
-    sync        = require( 'browser-sync' ),
     concat      = require( 'gulp-concat' ),
     bulkSass    = require( 'gulp-cssimport' ),
     jade        = require( 'gulp-jade' ),

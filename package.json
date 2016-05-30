@@ -4,8 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test",
-    "start": "node server.js"
+    "gulp": "gulp",
+    "serve": "nodemon",
+    "db": "mongod",
+    "dev": "concurrently \"npm run gulp\" \"npm run db\" \"npm run serve\"",
+    "start": "npm run dev"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,7 @@
   },
   "homepage": "https://github.com/ShawnChambless/grainbilld2#readme",
   "devDependencies": {
-    "browser-sync": "^2.8.2",
+    "concurrently": "^2.0.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-concat": "^2.6.0",
@@ -30,14 +33,12 @@
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.2.0",
     "gulp-uglifycss": "^1.0.4",
-    "gulp-watch": "^4.3.4",
-    "mocha": "^2.2.5"
+    "gulp-watch": "^4.3.4"
   },
   "dependencies": {
     "bcryptjs": "^2.2.1",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
-    "cors": "^2.7.1",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "http": "0.0.0",

@@ -17,10 +17,10 @@ header.navigation {
   $navigation-search-border: 1px solid darken($navigation-background, 5);
   $navigation-active-link-color: $blue_contrast;
   $navigation-submenu-padding: 1em;
-  $navigation-submenu-width: 12em;
+  $navigation-submenu-width: 10em;
   $horizontal-bar-mode: $large-screen;
 
-  background-color: $navigation-background;
+  // background-color: $navigation-background;
   font-size: 1.2em;
   min-height: $navigation-height;
   width: 100%;
@@ -34,7 +34,6 @@ header.navigation {
   }
 
   .logo {
-    margin-top: -5px;
     float: left;
     height: $navigation-height;
     padding-left: $navigation-padding;
@@ -46,6 +45,7 @@ header.navigation {
     span {
       max-height: $navigation-height;
       font-size: 2.3em;
+      color: $blue;
     }
   }
 
@@ -77,6 +77,7 @@ header.navigation {
     float: none;
     min-height: $navigation-height;
     z-index: 9999999;
+    margin-top: 5px;
 
     @include media ($horizontal-bar-mode) {
       float: right;
@@ -104,13 +105,12 @@ header.navigation {
       padding: 0;
     }
   }
-.logo, ul li.nav-link a{
+.logo, ul li.nav-link a {
     &:hover {  
         filter: brightness(0.8);
     }
 }
   ul li.nav-link {
-    background: $navigation-background;
     display: block;
     line-height: $navigation-height;
     overflow: hidden;
@@ -118,7 +118,6 @@ header.navigation {
     text-align: right;
     width: 100%;
     z-index: 9999;
-    
 
     @include media ($horizontal-bar-mode) {
       display: inline;
@@ -126,14 +125,17 @@ header.navigation {
       width: auto;
     }
 
-
     a {
-      color: $navigation-color;
       display: inline-block;
+      text-align: center;
       text-decoration: none;
+      padding: 0 0.5em;
+      border: 3px solid $blue;
+      border-radius: 2px;
+      // height: $navigation-height - 10px;
+
 
       @include media ($horizontal-bar-mode) {
-        padding-right: 1em;
       }
 
     }
@@ -162,13 +164,13 @@ header.navigation {
     }
 
     > a {
-      padding-right: 0.6em;
+      padding: 0 0.9em;
     }
 
     > a:after {
-      @include position(absolute, auto -0.4em auto auto);
+      @include position(absolute, auto 0.1em auto auto);
       content: '\25BE';
-      color: $navigation-color;
+      color: #999;
     }
   }
 
@@ -181,7 +183,7 @@ header.navigation {
     }
 
     > a {
-      padding-right: 1.6em;
+      // padding-right: 1.6em;
       position: relative;
       
       @include media($horizontal-bar-mode) {
